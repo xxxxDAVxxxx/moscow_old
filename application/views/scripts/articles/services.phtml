@@ -1,0 +1,27 @@
+	<div id="service_items">
+		<ul>
+			
+			<?php
+				if (isset($this->data['articles'])) { 
+					$i=0;
+					foreach($this->data['articles'] as $key => $article) { 
+						$i+=1;		
+			?>
+			<li class="service_item">
+				<div id="service_logo_div<?php echo $i; ?>" class="service_logo_div">
+					<a href="<?php echo URL . 'services/'.  $article['slug'] ; ?>" id="service_logo1" class="service_logo">
+						<img class="service_img" src="<?php echo URL."img_uploaded/articles/".$article['image']."?rand=".rand(); ?>" />
+					</a>
+				</div>
+				<div class="service_preview">
+					<a class="service_preview_title" href="<?php echo URL . 'services/'.  $article['slug'] ; ?>"><?php echo $article['title']; ?></a>
+					<p class="service_preview_text"><?php echo substr(strip_tags($article['content']), 0, 200); ?> </p>
+					<a href="<?php echo URL . 'services/'.  $article['slug'] ; ?>" class="more_link"><span>подробнее</span></a>
+				</div>
+			</li>
+			<?php
+					}
+				}
+			?>
+		</ul>
+	</div>

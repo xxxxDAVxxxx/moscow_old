@@ -1,0 +1,46 @@
+<div id="view_news_item">
+	<p id="news_title"><?php echo $this->content['title']; ?></p>
+	<div>	
+		<div id="news_view">
+				<?php if ($this->content['image']) { ?>
+					<img id="news_view_image" src="<?php echo URL."img_uploaded/articles/".$this->content['image']; ?>"/>
+				<?php } ?>
+				<div id="news_text">
+					<?php echo $this->content['content']; ?>
+				</div>
+		</div>
+		<div id="other_news">
+			<ul>
+				<?php
+					if (isset($this->other_articles['articles'])) { //print_r($this->other_articles['articles']);exit();
+						foreach($this->other_articles['articles'] as $key => $article) { 		
+				?> 
+							<li class="other_news_item">
+								<table class="other_news_table">
+								<tr>
+								<?php if($article['image']) { ?>
+								<td>
+									<a href="<?php echo URL . 'articles/inner/'.$article['slug']; ?>" class="other_news_img_link">
+										<img src="<?php echo URL.'img_uploaded/articles/'.$article['image'];?>" class="other_news_preview_img"/>
+									</a>
+								</td>
+								<?php } ?>
+								<td>
+								<div class="other_news_preview_content">
+									<a href="<?php echo URL . 'articles/inner/'.$article['slug']; ?>" class="other_news_preview_title"><?php echo $article['title']; ?></a>
+									<p class="other_news_preview_text_p">
+										<span class="other_news_preview_text"><?php echo substr(strip_tags($article['content']), 0, 200);?></span>
+										<a class="other_news_link" href="#"><img src="http://atcompany.com.ua/img/points.png"/></a>
+									</p>
+								</div>
+								</td>
+								</tr>
+								</table>
+								<div class="other_news_ornament">						
+								</div>
+							</li>	
+				<?php }}?>	
+			</ul>
+		</div>
+	</div>
+</div>

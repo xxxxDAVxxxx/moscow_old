@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<?php echo $this->headTitle(); ?>
+		<?php echo $this->headMeta(); ?>
+		<?php echo $this->headLink(); ?>
+		<?php echo $this->headScript(); ?>
+	</head>
+	<body>
+		<div id="body-wrapper">
+			<div id="header">
+				<div id="header-content">
+					<a href="#" id="main-logo">
+						<p id="main-logo-title">Nedvizhimost.com</p>
+						<p id="main-logo-desc">краткое описание деятельности</p>
+					</a>
+					<div id="main-top-menu">
+						<a href="#" class="main-top-menu-item" href="#">Офисные помещения</a>
+						<a href="#" class="main-top-menu-item" href="#">Торговые помещения</a>
+						<a href="#" class="main-top-menu-item" href="#">Склады</a>
+						<a href="#" class="main-top-menu-item" href="#">Новости</a>
+					</div>
+					<input id="search-input" name="input-search" type="text" placeholder="поиск...">
+				</div>
+			</div>
+			<div id="main">
+				<div id="left">
+					<div id="main-left-menu">
+						<a href="#" class="main-left-menu-item" href="#">Главная</a>
+						<a href="#" class="main-left-menu-item" href="#">Собственники</a>
+						<a href="#" class="main-left-menu-item" href="#">Аналитика</a>
+						<a href="#" class="main-left-menu-item" href="#">Исследования</a>
+						<a href="#" class="main-left-menu-item" href="#">Рейтинг риэлторов</a>
+						<a href="#" class="main-left-menu-item" href="#">Производственные комплексы</a>
+						<a href="#" class="main-left-menu-item" href="#">Другие помещения</a>
+						<a href="#" class="main-left-menu-item" href="#">Запросы на помещения</a>						
+					</div>
+					<a href="#" id="events">Мероприятия</a>
+					<ul id="best-realty-list">
+						<li>
+							<a href="#">Лучшая недвижимость</a>
+							<p>описание новости. При клике на заголовок - откроется полностью</p>
+						</li>
+						<li>
+							<a href="#">Лучшая недвижимость</a>
+							<p>описание новости. При клике на заголовок - откроется полностью</p>
+						</li>
+						<li>
+							<a href="#">Лучшая недвижимость</a>
+							<p>описание новости. При клике на заголовок - откроется полностью</p>
+						</li>
+					</ul>
+				</div>
+				<div id="center-right">
+					<div id="center">
+						<?php echo $this->layout()->content; ?>
+					</div>
+					<div id="right">
+						<?php echo $this->action('index', 'auth'); ?>
+						<a class="banner" href="#"><img src="http://moscow.atplus.com.ua/img/banner.png"></a>
+						<a class="banner" href="#"><img src="http://moscow.atplus.com.ua/img/banner.png"></a>
+						<div id="context-commercial">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="copyright">
+					Недвижимость &copy; 2012<br>
+					Все права защищены
+				</div>
+			</div>
+		</div>
+		<?php //echo $this->action('register', 'auth'); ?>
+		<div id="registration-bg">
+		</div>
+		<div id="registration">
+			<div id="registration-center">
+				<div id="registration-cancel"></div>
+				<div id="registration-form">
+					<p class="registration-form-title">
+						Регистрация собственников недвижимости
+					</p>
+					<p class="form-for-user-info" id="registration-form-required-info">
+						Поля, отмеченные <span>*</span> обязательны к заполнению
+					</p>
+					<p class="registration-caption">
+						*Название компании:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-name" name="company-name" type="text">
+					<br>
+					<p class="registration-caption">
+						*Пароль:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-pass" name="company-pass" type="password">
+					<br>
+					<p class="registration-caption">
+						*Пароль повторно:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-pass-confirm" name="company-pass-confirm" type="password">
+					<br>
+					
+					<p class="registration-caption">
+						Описание компании:
+					</p>
+					<textarea class="registration-textarea" id="company-desc" name="company-desc"></textarea>
+					<br>
+					<p class="registration-caption">
+						*E-mail:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-email" name="company-email" type="text">
+					<br>
+					<!-- <p class="registration-caption">
+						Наименование объекта:
+					</p>
+					<input class="registration-input" id="object-name" name="object-name" type="text">
+					<br> -->
+					<p class="registration-caption">
+						Телефон:
+					</p>
+					<input class="registration-input" id="company-phone" name="company-phone" type="text">
+					<br>
+					<p class="registration-caption">
+						Skype:
+					</p>
+					<input class="registration-input" id="company-skype" name="company-skype" type="text">
+					<br>
+					<p class="registration-caption">
+						ICQ:
+					</p>
+					<input class="registration-input" id="company-icq" name="company-icq" type="text">
+					<br>
+					<p class="registration-caption">
+						*Ответственное лицо:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="responsible-person" name="responsible-person" type="text">
+					<br>
+					<p class="registration-caption">
+						Название сайта <span class="form-for-user-info">(если имеется)</span>
+					</p>
+					<input class="registration-input" id="site" name="site" type="text"/>
+					<br>
+					<p class="registration-caption-license">
+						<input id="license-check" name="license-check" type="checkbox"/>
+						Я ознакомился и согласен с правилами <a href="#">лицензионного соглашения</a>
+						<br><span class="reg-error"></span>
+					</p>
+					<div id="registration-submit">
+					</div>
+					<!-- <p id="submit-user-info" class="form-for-user-info">
+						После завершения регистрации с Вами свяжется наш менеджер
+					</p> -->
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,710 @@
+/*
+
+div#admin-biblio form table tbody td.admin-biblio-filename a {
+	font-weight: bold;
+}
+div#admin-biblio form table tbody td.admin-biblio-recordname a {
+	display: inline-block;
+}
+div#admin-biblio form table tbody td.admin-biblio-author {
+	width: 100px;
+}
+div#admin-biblio form table tbody td.admin-biblio-attach {
+	width: 190px;
+}
+div#admin-biblio form table tbody td p {
+	margin: 0;
+}
+div#admin-biblio form table tbody td a {
+	margin: 0;
+}
+
+div#admin-biblio form table tbody td.admin-biblio-checkbox {
+	width: 20px;
+}
+div#admin-biblio form table tbody td.admin-biblio-image {
+	width: 85px;
+}
+div#admin-biblio form table tbody td.admin-biblio-filename {
+	width: 240px;
+}
+div#admin-biblio form table tbody td.admin-biblio-recordname {
+	font-weight: bold;
+	width: 250px;
+}
+
+
+
+
+
+
+#upload-file {
+	background-color: #d5eeff;
+	display: inline-block;
+	width: 110px;
+	height: 20px;
+	padding: 5px 5px 5px 10px;
+}
+#admin-biblio-add {
+	margin: 20px 0 0 40px;
+}
+#admin-biblio-add button {
+	background-color: transparent;
+	border-width: 0;
+	height: 30px;
+	display: inline-block;
+	padding: 0;
+	width: auto;
+}
+#admin-biblio-add p {
+	display: inline-block;
+	line-height: 30px;
+	margin: 0;
+	vertical-align: top;
+}
+#admin-biblio-info {
+	display: block;
+	border: 1px solid #dfdfdf;
+}
+#admin-biblio-info-mini {
+	display: block;
+	border-bottom: 1px solid #dfdfdf;
+	padding: 5px;
+}
+#admin-biblio-info-mini button {
+	display: inline-block;
+	line-height: 32px;
+	vertical-align: top;
+	float: right;
+	color: blue;
+	text-decoration: underline;
+}
+#admin-biblio-info-maxi {
+	display: block;
+	padding: 15px;
+}
+#admin-biblio-info-maxi img {
+	max-width: 128px;
+	max-height: 128px;
+}
+#admin-biblio-info-right {
+	width: 480px;
+	display: inline-block;
+	padding-left: 20px;
+	vertical-align: top;
+}
+#admin-biblio-info-maxi #admin-biblio-info-right p {
+	display: block;
+	line-height: 24px;
+	margin: 0;
+}
+#admin-biblio-info-maxi p {
+	display: block;
+	margin-bottom: 10px;
+}
+#admin-biblio-info-maxi strong {
+	display: inline-block;
+	width: 160px;
+	vertical-align: top;
+}
+#admin-biblio-info-maxi input,
+#admin-biblio-info-maxi textarea,
+#admin-biblio-info-maxi i {
+	display: inline-block;
+	width: 460px;
+	vertical-align: top;
+}
+
+div#admin-biblio #upload {
+    margin: 0;
+}
+div#admin-biblio-info-mini img {
+	max-height: 32px;
+	max-width: 32px;
+}
+#js-mail-result {
+	float: right;
+	background: transparent;
+	border: 0;
+	color: black;
+	font-size: 30px;
+	text-shadow: #000000 0 0 3px;
+}
+dl.zend_form {
+	margin: 0;
+}
+dt#file-label,
+dt#submit-label {
+	display: none;
+}
+dl.zend_form dd {
+	width: 230px;
+	display: inline-block;
+	margin: 0;
+}
+}*/
+#admin-article-image {
+	_width:270px;
+	max-width:270px;
+	display: block;
+}
+
+
+.section{
+	text-align: left;
+	_text-align: center;
+	width: 100%;
+	margin: auto;
+	display: block;
+	position: relative;
+}
+
+body {
+	background-color: #ffffff;
+	color: #111111;
+	margin: 0;
+	padding: 0;
+}
+body img {
+	border: 0;
+}
+li,
+a {
+	color: #21759b;
+}
+h1 {
+	color: #000000;
+	font-size: 18px;
+	margin:0;
+}
+h2 {
+	color: #000000;
+	font-size: 14px;
+	margin:0;
+}
+
+/*////////////////////////////////////////Admin header//////////////////////////////////////////*/
+
+
+#header{
+	width:1008px;
+	margin:0 auto;
+	height: 170px;
+	background: transparent url(http://atcompany.com.ua/images/admin_logo.png) bottom no-repeat;
+}
+
+div#header div#admin-menu {
+	display: block;
+	float: right;
+	margin: 25px 40px 0 0;
+}
+div#header div#admin-menu a {
+	height: 35px;
+	line-height: 35px;
+	display: block;
+	float: right;
+	padding: 0 10px 0 10px;
+	margin: 0 0 0 40px;
+	color: #959ba0;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+}
+div#header div#admin-menu a.active,
+div#header div#admin-menu a:hover {
+	background-color: #e5e5e5;
+	text-decoration: underline;
+}
+
+/*////////////////////////////////////////END Admin header//////////////////////////////////////////*/
+div#admin-biblio{
+	margin:0 auto;
+	width:1008px;
+}
+div#admin-biblio form h2 {
+	display: inline-block;
+	margin: 0 60px 0 0;
+}
+div#admin-biblio h1,
+div#admin-edit h1 {
+	display: inline-block;
+	line-height: 50px;
+	vertical-align: top;
+}
+div#admin-biblio form {
+	margin: 0 4px;
+	width:1000px;
+	margin-top:30px;
+}
+
+div#admin-biblio form select {
+	display: inline-block;
+	margin: 0 30px 0 0;	
+}
+div#admin-biblio form table {
+	margin: 15px 0 0 0;	
+	width: 1000px;
+	text-align:center;
+}
+div#admin-biblio form table thead,
+div#admin-biblio form table tfoot {
+	background-color:#DDD;
+	font-weight:bold;
+}
+div#admin-biblio form table thead td,
+div#admin-biblio form table tfoot td {
+	padding: 0; 
+}
+
+div#admin-biblio form table tbody td {
+	padding: 10px 5px; 
+	border-left:1px solid #DDD;
+}
+.action-edit {
+	height: 32px;
+	width:  32px;
+}
+.action-delete {
+	height: 32px;
+	width:  32px;
+}
+.admin-biblio-action {
+	width:80px;
+}
+
+
+
+
+
+
+
+div#admin-biblio form table tbody p#admin-biblio-mess-p {
+	background: transparent url(http://atcompany.com.ua/images/admin_more_mess.png) 0 0 no-repeat;
+	width: 23px;
+	height: 27px;
+	color: white;
+	padding: 4px 0 0 8px;
+	font-size: 10px;
+}
+div#admin-biblio input#admin-del-zap-submit {
+	float: right;
+	margin: 25px 150px 0 0;
+}
+
+
+
+
+
+
+
+
+div#admin-biblio,
+div#admin-edit {
+	text-align:left;
+	width:1008px;
+	margin: 0 auto;
+	margin-top:30px;
+}
+div#admin-biblio img,
+div#admin-edit img {
+	display: inline-block;
+	margin: 0 0 0 0;
+}
+
+
+div#admin-edit form {
+	width: 880px;
+	margin: 20px 0 0 0;
+}
+div#admin-edit form div#admin-edit-left {
+	
+	float:left;
+	width: 570px;
+	margin: 0 5px 0 0;
+	
+	vertical-align: top;
+}
+div#admin-edit form div#admin-edit-right {
+	
+	float:left;
+	width: 280px;
+	margin: 0;
+	/*display: inline-block;*/
+
+}
+div#admin-edit form div#admin-edit-left p {
+	width: 195px;
+	margin: 0 20px 15px 0;
+	display: inline-block;
+}
+
+div#admin-edit form div#admin-edit-left input {
+	width: 230px;
+	height: 20px;
+	background-color: #d5eeff;
+	margin: 0 0 20px 0;
+}
+div#admin-edit form div#admin-edit-left select {
+	min-width: 150px;
+	height: 20px;
+	margin: 0 0 15px 0;
+}
+div#admin-edit-right div#admin-edit-right-first {
+	border: 1px solid #dfdfdf;
+}
+div#admin-edit-right div.admin-edit-head {
+	background: transparent url(http://atcompany.com.ua/images/admin_table_head.png) 0 0 repeat-x;
+	padding: 0 0 0 10px;
+	height: 30px;
+	line-height: 30px;
+}
+div#admin-edit-right div#admin-edit-right-first input#admin-edit-preview {
+	background: transparent url(http://atcompany.com.ua/images/admin_table_head.png) 0 0 repeat-x;
+	display: block;
+	margin: 0 0 0 155px;
+}
+div#admin-edit-right div#admin-edit-right-first p {
+	padding: 5px 0 5px 5px;
+	margin: 0;
+}
+div#admin-edit-right div#admin-edit-right-first p a {
+	text-decoration: underline;
+}
+div#admin-edit-right div#admin-edit-right-first div#admin-edit-footer {
+	background-color: #eaf2fa;
+	display: block;
+	height: 50px;
+	border-top: 1px solid #dfdfdf;
+	text-align: center;
+	padding: 10px 0 0 0;
+	margin: 20px 0 0 0;
+}
+#admin-edit-right-first{
+	text-align: center;
+}
+div#admin-edit-right div#admin-edit-right-first p#admin-edit-right-first-center {
+	border-top: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+div#admin-edit-right div#admin-edit-right-second {
+	border: 1px solid #dfdfdf;
+	margin: 20px 0 0 0;
+}
+div#admin-edit-right div#admin-edit-right-second input {
+	margin: 5px 0 5px 5px;
+	display: block;
+}
+div#admin-edit-right div#admin-edit-right-second input#admin-edit-metha {
+	margin: 5px 0 5px 5px;
+	height: 20px;
+	width: 180px;
+}
+div#admin-edit-right div#admin-edit-right-second p {
+	margin: 5px 0 5px 5px;
+	font-style: italic;
+}
+div#admin-edit-right div#admin-edit-right-second a {
+	margin: 15px 0 10px 5px;
+	display: block;
+}
+div#admin-edit form div#admin-edit-left div.nicEdit-main p{
+	width: 100%;
+	margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.admin-view-items{
+	text-align:center;
+}
+.admin-id-column {
+	width: 80px;
+	font-weight:bold;
+}
+.admin-date-column{
+	width: 100px;
+	font-weight:bold;
+}
+.admin-type-column {
+	width: 100px;
+
+}
+.admin-image-column img{
+	width: 150px;
+}
+.admin-slug-column{
+	width: 150px;
+	text-overflow:ellipsis;
+	color:red;
+}
+.admin-title-column a{
+	text-decoration:none;
+	font-weight:bold;
+}
+.admin-title-column a:hover{
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+div#admin-profile {
+	width:1008px;
+	margin:0 auto;
+	margin-top: 30px;
+}
+div#admin-profile img {
+	display: inline-block;
+	margin: 0 10px 0 0;
+}
+div#admin-profile h1 {
+	width: 400px;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 49px;
+}
+span#red-star {
+	color: red;
+}
+div#admin-profile form{
+	margin: 30px 0 0 35px;
+	display: block;
+}
+div#admin-profile form p{
+	width: 345px;
+	display: inline-block;
+	margin: 10px 0 0 0;
+}
+div#admin-profile form input{
+	width: 165px;
+	display: inline-block;
+}
+div#admin-profile form input#admin-profile-submit {
+	margin: 55px 0 0 350px;
+	width: 74px;
+}
+div#admin-profile form input#admin-profile-mail,
+div#admin-profile form input#admin-profile-name {
+	background-color: #d5eeff;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-add p {
+	line-height: 30px;
+	width: 225px;
+	vertical-align: top;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-add p#admin-new-file-problem {
+	line-height: 14px;
+	width: 770px;
+	display: block;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-add p.admin-new-file-sub {
+	width: 770px;
+	display: block;
+	font-style: italic;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-add input {
+	display: inline-block;
+	width: auto;
+	margin: 10px 0 0 0;
+}
+div#admin-profile div#admin-new-file-see {
+	width: 680px;
+	border: 1px solid #dfdfdf;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-mini {
+	border-bottom: 1px solid #dfdfdf;
+	padding: 5px;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-mini a {
+	line-height: 32px;
+	float: right;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max {
+	padding: 10px;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max img {
+	display: inline-block;
+	width: 128px;
+	height: 128px;
+	margin: 0 30px 0 0;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max div#admin-new-file-see-max-image-info {
+	display: inline-block;
+	width: 450px;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max div#admin-new-file-see-max-image-info p {
+	width: 450px;
+	margin: 0 0 5px 0;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max p {
+	width: 160px;
+	line-height: 25px;
+	margin: 0 0 10px 0;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max p.admin-new-file-sub {
+	margin: 0 0 0 160px;
+	line-height: 25px;
+	font-style: italic;
+	width: 460px;
+}
+div#admin-profile form#admin-new-file div#admin-new-file-see div#admin-new-file-see-max input {
+	width: 460px;
+	height: 25px;
+	margin: 0 0 10px 0;
+}
+div#admin-profile input#admin-profile-new-pass {
+	width: 60px;
+}
+div#admin-profile div#admin-div-profile-rep-pass {
+	display: none;
+}
+.article {
+	width:  580px;
+}
+#js-article-submit {
+	margin-top: 5px;
+	float: left;
+	background: transparent;
+	border: 0;
+	color: black;
+	font-size: 30px;
+	text-shadow: #000000 0 0 3px;
+}
+#js-project-submit {
+	margin-top: 5px;
+	clear:both;
+	background: transparent;
+	border: 0;
+	color: black;
+	font-size: 30px;
+	text-shadow: #000000 0 0 3px;
+}
+.error {
+	display: none;
+	color:  red;
+	margin-bottom:15px;
+}
+
+#admin-project-image{
+	width:270px;
+	max-width:270px;
+	margin-left:4px !important;
+	margin-top:10px !important;
+}
+.project-images-item{
+	position:relative;
+}
+.image_delete_link{
+	position:absolute;
+	top:5px;
+	left:5px;
+	cursor:pointer;
+}
+.admin-project-image{
+	width:150px;
+	max-width:150px;
+	margin:0 auto;
+	
+	margin-top:10px !important;
+}
+.admin-project-image-title{
+	width:270px;
+	font:11px Arial, Helvetica, Tahoma, sans-serif;
+}
+#project_view_separator{
+	width:1008px;
+	clear:both;
+}
+#nav_section{
+	width:100%;
+	text-align:center;
+}
+#projects_page_nav{
+	clear:both;
+	width:800px;
+	margin:0 auto;
+	padding-top:30px;
+	padding-bottom:30px;
+}
+#projects_page_nav a{
+	text-decoration:none;
+	font:18px Arial, Helvetica, Tahoma, sans-serif;
+}
+#projects_page_nav a:hover{
+	color:#75a208;
+	text-decoration:underline;
+}
+.project_nav_item_active{
+	color:#75a208;
+}
+#articles_type_link{
+	margin-left:40px;
+	text-decoration:none;
+}
+#articles_type_link:hover{
+	text-decoration:underline;
+}
+div#entrance {
+	width: 230px;
+	height: 315px;
+	margin: 110px auto 180px auto;
+	background: transparent url(http://atcompany.com.ua/images/admin_entrance.png) 0 0 no-repeat;
+	display: block;
+}
+div#entrance form{
+	width: 135px;
+	height: 95px;
+	margin: 111px 90px 0 5px;
+	display: block;
+	float: left;
+}
+div#entrance form input#login,
+div#entrance form input#pass {
+	width: 135px;
+	height: 30px;
+	color: #86959e;
+}
+div#entrance form input#login {
+	margin: 0;
+}
+div#entrance form input#pass {
+	margin: 10px 0 0 0;
+}
+div#entrance form input#remember {
+	margin: 12px 0 0 0;
+	float: left;
+}
+div#entrance form p {
+	margin: 9px 5px 0 5px;
+	float: left;
+	displzy: block;
+	width: 57px;
+	font-size: 11px;
+	color: #8faeba;
+}
+div#entrance form input#button {
+	margin: 10px 0 0 0;
+	float: left;
+	width: 50px;
+	height: 20px;
+	color: #0d2b3e;
+	font-size: 12px;
+	line-height: 20px;
+	border: 0;
+}

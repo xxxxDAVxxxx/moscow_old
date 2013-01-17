@@ -1,0 +1,55 @@
+	<div class="section">
+		<div id="admin_biblio">
+			<img src="<?php echo URL . 'images/admin_red_zap_h1.png'?>">
+			<h1>Редактирование записи</h1>
+			<form action="">
+				<h2>Все записи</h2>
+				<select size="1" name="admin_biblio_time">
+					<option value="0">За все время</option>
+				</select>
+				<select size="1" name="admin_biblio_page">
+					<option value="0">На всех страницах</option>
+				</select>
+				<select size="1" name="admin_biblio_page">
+					<option value="0">Во всех разделах</option>
+				</select>
+				<table  border="1" cellspacing="0" bordercolor="#dfdfdf" rules="rows">
+					<thead>
+  						<tr>
+   							<td class="admin_biblio_recordname">Запись</td>
+   							<td class="admin_biblio_pages">Рубрика</td>
+   							<td class="admin_biblio_metha">Метки</td>
+   							<td class="admin_biblio_date">Дата создания(изменения)</td>
+   							<td class="admin_biblio_action">Действия</td>
+  						</tr>
+ 					</thead>
+ 					<tbody>
+ 						<?php foreach ($this->articles as $key => $article) { ?>
+ 							<tr valign="top">
+								<td class="admin_biblio_recordname">
+									<a href="<?php echo URL . "pages/articles/17/{$article['slug']}/{$article['id']}"; ?>"><?php echo $article['title']; ?></a> <?php echo (($article['status'] == 0) ? ' - черновик' : ''); ?>
+								</td>
+								<td class="admin_biblio_pages"><?php echo $article['rubricName']; ?></td>
+								<td class="admin_biblio_metha">Метки отсутствуют</td>
+								<td class="admin_biblio_date"><p><?php echo $article['timestamp']; ?><br/></p></td>
+								<td class="admin_biblio_action">
+									<a href="" class="action_edit" title="Редактировать">&nbsp</a>
+									<a href="" class="action_delete" title="Удалить">&nbsp</a>
+								</td>
+							</tr>		
+ 						<?php } ?>		
+  					</tbody>
+					<tfoot>
+						<tr>
+   							<td class="admin_biblio_filename">Запись</td>
+   							<td class="admin_biblio_pages">Рубрика</td>
+   							<td class="admin_biblio_metha">Метки</td>
+   							<td class="admin_biblio_date">Дата создания(изменения)</td>
+   							<td class="admin_biblio_action">Действия</td>
+  						</tr>
+  					</tfoot>
+				</table> 
+				<input type="image" id="admin_del_zap_submit"  src="<?php echo URL . 'images/admin_red_zap_submit.png'?>">
+			</form>
+		</div>
+	</div>

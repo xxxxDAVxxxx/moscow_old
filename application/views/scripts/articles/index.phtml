@@ -1,0 +1,57 @@
+<div id="news_items">
+	<ul>
+		<?php
+			if (isset($this->data['articles'])) { 
+				foreach($this->data['articles'] as $key => $article) { 		
+		?> 		
+			<li class="news_item">
+				<table class="news_table">
+				<tr>
+				<?php if($article['image']){ ?>
+					<td>
+						<a href="<?php echo URL . 'articles/inner/'.  $article['slug'] ; ?>" class="news_img_link">
+							<img src="<?php echo URL.'img_uploaded/articles/'.$article['image'] ; ?>" class="news_preview_img"/>
+						</a>
+					</td>	
+				<?php } ?>
+					<td>
+						<div class="news_preview_content">
+							<a class="news_preview_title" href="<?php echo URL . 'articles/inner/'.  $article['slug'] ; ?>"><?php echo $article['title']; ?></a>
+							<p class="news_preview_text_p">
+								<span class="news_preview_text"><?php echo substr(strip_tags($article['content']), 0, 200); ?></span>
+								<a class="news_link" href="<?php echo URL . 'articles/inner/'.  $article['slug'] ; ?>"><img src="http://atcompany.com.ua/img/points.png"/></a>
+							</p>
+						</div>
+					</td>
+				</tr>
+				</table>
+				<div class="news_ornament">						
+				</div>
+			</li>					
+	 	<?php 	
+				} 
+			}
+			
+	 	?>				
+	</ul>
+	<div id="news_page_nav">
+			<?php
+				if(isset($this->data['prev'])&& $this->data['prev']){
+					echo "<a href=\"".URL."articles/
+					page/".($this->page-1)."\">мюгюд</a><span>&nbsp&nbsp&nbsp&nbsp</span>";
+				}
+				if(isset($this->countPage) && is_numeric($this->countPage) && ($this->countPage>1)){
+					for ($i = 1; $i <= $this->countPage; $i++) {
+	   					 echo "<a ";
+	   					 if($i==$this->page){
+	   					 	echo " class=\"news_nav_item_active\"";
+	   					 }
+	   					 echo " href=\"".URL."articles/page/".$i."\">$i</a><span>&nbsp</span>";
+					}
+				}
+				if(isset($this->data['next'])&& $this->data['next']){
+					echo "<span>&nbsp&nbsp&nbsp</span><a href=\"".URL . "articles/page/".($this->page+1)."\">боепед</a>";
+				}
+			?>
+	</div>
+</div>

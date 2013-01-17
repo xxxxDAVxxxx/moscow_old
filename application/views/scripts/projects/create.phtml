@@ -1,0 +1,100 @@
+<?php $project = $this->project; ?>
+<div class="section">
+	<div id="admin-edit">
+		<img src="<?php echo URL . 'images/admin_new_zap_h1.png'; ?>">
+		<h1><?php echo (isset($project['id']) ? 'Редактирование записи' : 'Добавление новой записи');?></h1>
+		<div id="js-create-result"></div>
+		<form method="post" action="">
+			<div id="admin-edit-left">
+				<p>Заголовок<span id="red-star">*</span></p>
+				<input type="text" id="js-project-name" name="title" value="<?php echo (isset($project['title']) ? $project['title'] : '');?>"><br>
+				<label class="error" id="js-project-name">Введите заголовок статьи</label><br>
+				<p>Слаг<span id="red-star">*</span></p>
+				<input type="text" id="js-project-slug" name="slug" value="<?php echo (isset($project['pslug']) ? $project['pslug'] : '');?>"><br>
+				<label class="error" id="js-project-slug">Введите слаг статьи</label><br>
+				<br>
+				<p>Дата заказа (ГГГГ-MM-ДД)</p>
+				<input type="text" value="0000-00-00" id="js-project-order_date" name="order_date" value="<?php echo (isset($project['order_date']) ? $project['order_date'] : '');?>"><br>
+				<br>
+				<p>Состояние проекта</p>
+				<input type="text" id="js-project-status" name="status" value="<?php echo (isset($project['status']) ? $project['status'] : '');?>"><br>
+				<br>
+				
+				<?php if (isset($project['id'])) { ?>
+					<input type="hidden" name="id" id="js-project-id" value="<?php echo $project['id']; ?>">
+				<?php } ?>
+				<p>Текст</p>
+				<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+				<script type="text/javascript">
+					var area1;
+									
+					function toggleArea() {
+				        if(!area1) {
+				        	area1 = new nicEditor({
+				                fullPanel : true,
+				            	iconsPath:'http://js.nicedit.com/nicEditIcons-latest.gif'
+				                }).panelInstance('js-project-content',{hasPanel : true});
+				                
+				        } else {
+				                area1.removeInstance('js-project-content');
+				                area1 = null;
+				        }
+					}
+   				</script>
+  				<textarea id="js-project-content" class="article" name="content" placeholder="Здесь могла бы быть Ваша РЕКЛАМА..."><?php echo (isset($project['content']) ? $project['content'] : '');?></textarea>
+	  			<script type="text/javascript">	
+	  				area1 = new nicEditor({
+			                fullPanel : true,
+			            	iconsPath:'http://js.nicedit.com/nicEditIcons-latest.gif'
+			                }).panelInstance('js-project-content',{hasPanel : true});
+	  			</script>   
+  				<label class="error" id="js-project-error">This field is required.</label>
+				<br>
+				<div  style="margin-top:10px; margin-left: 15px;"><button onclick="toggleArea();">Включить/Выключить NICEditor</button></div>
+			</div>
+			<div id="admin-edit-right">
+				<div id="admin-edit-right-first">
+					<div class="admin-edit-head">
+						Метки
+					</div>
+					<br>
+					<label>Заголовок страницы</label><br />
+					<input type="text" id="admin-edit-metat" name="meta_t" placeholder="Добавить title" value="<?php echo $project['meta_t']; ?>"><br />
+					<br>
+					<label>Введите ключевые слова</label><br />
+					<input type="text" id="admin-edit-metak" name="meta_k" placeholder="Добавить keywords" value="<?php echo $project['meta_k']; ?>"><br />
+					<br>
+					<label>Введите описание</label><br />
+					<textarea id="admin-edit-metad" name="meta_d" placeholder="Добавить keywords"><?php echo $project['meta_d']; ?></textarea><br />
+					<p>&nbsp;</p>
+					
+				</div>
+				<div id="admin-edit-right-first" class="admin-edit-right-first">
+					<div class="admin-edit-head">
+						Картинка
+					</div>
+					<br>
+					<input type="hidden" value="<?php echo isset($project['id'])? $project['id']: '0';?>" id="admin-project-image-id">
+					<input type="file" id="admin-project-image-uploader" name="proimage">
+					
+					<?php
+						if (isset($this->project['image'][0])) { 
+							foreach($this->project['image'] as $key => $image) { 		
+					?> 
+								<div class="project-images-item">
+									<hr>
+									<img class="admin-project-image" src="<?php echo URL."img_uploaded/projects/".$image['file_name']; ?>" alt="">
+									<input type="text" name="<?php echo "image".substr($image['file_name'],0, strrpos($image['file_name'], '.')); ?>" class="admin-project-image-title" placeholder="Добавить title" value="<?php echo $image['title']; ?>"><br />
+									<hr>
+									<span class="image_delete_link" title="Удалить"><img src="<?php echo URL . 'images/action_delete.png'?>" class="action-delete"></span>
+								</div>
+					<?php }} ?>	
+							<!-- <img src="<?php //echo isset($project['image'])? URL . 'img_uploaded/projects/'.$project['image'] : ''; ?>" id="admin-project-image"> -->
+				
+				</div>
+			</div>
+			<div id="js-project-submit" style="cursor: pointer; cursor: hand;">Сохранить</div>
+		</form>
+					
+	</div>
+</div>

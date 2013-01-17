@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /js/
+
+
+Host: at-plus.com.ua

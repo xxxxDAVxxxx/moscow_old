@@ -1,0 +1,78 @@
+<?php $article = $this->article; ?>
+<div class="section">
+	<div id="admin-edit">
+		<img src="<?php echo URL . 'images/admin_new_zap_h1.png'; ?>">
+		<h1><?php echo (isset($article['id']) ? 'Редактирование записи' : 'Добавление новой записи');?></h1>
+		<div id="js-create-result"></div>
+		<form method="post" action="">
+			<div id="admin-edit-left">
+				<p>Заголовок<span id="red-star">*</span></p>
+				<input type="text" id="js-article-name" name="title" value="<?php echo (isset($article['title']) ? $article['title'] : '');?>"><br>
+				<label class="error" id="js-art-name">Введите заголовок статьи</label><br>
+				<p>Слаг<span id="red-star">*</span></p>
+				<input type="text" id="js-article-slug" name="slug" value="<?php echo (isset($article['slug']) ? $article['slug'] : '');?>"><br>
+				<label class="error" id="js-art-slug">Введите слаг статьи</label><br>
+				<?php if (isset($article['id'])) { ?>
+					<input type="hidden" name="separator" id="js-article-id" value="<?php echo $article['id']; ?>">
+				<?php } ?>
+				<p>Категория</p>
+				<select id="js-article-status" size="1" name="status">
+					<option value="news" <?php if($article['type']=="news"){echo " selected";} ?> >Новости</option>
+					<option value="services" <?php if($article['type']=="services"){echo " selected";} ?>>Услуги</option>
+				</select>
+				<p>Текст</p>
+				<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+				<script type="text/javascript">
+					var area1;
+					function toggleArea() {
+				        if(!area1) {
+				                area1 = new nicEditor({
+				                fullPanel : true,
+				            	iconsPath:'http://js.nicedit.com/nicEditIcons-latest.gif'
+				                }).panelInstance('js-article-content',{hasPanel : true});
+				        } else {
+				                area1.removeInstance('js-article-content');
+				                area1 = null;
+				        }
+					}
+   				</script>
+  				<textarea id="js-article-content" class="article" name="content" placeholder="Здесь могла бы быть Ваша РЕКЛАМА..."><?php echo (isset($article['content']) ? $article['content'] : '');?></textarea>
+  				<script type="text/javascript">	  	
+  					  	area1 = new nicEditor({
+			                fullPanel : true,
+			            	iconsPath:'http://js.nicedit.com/nicEditIcons-latest.gif'
+			                }).panelInstance('js-article-content',{hasPanel : true});
+	  			</script>   
+  				<label class="error" id="js-article-error">This field is required.</label>
+			</div>
+			<div id="admin-edit-right">
+				<div id="admin-edit-right-first">
+					<div class="admin-edit-head">
+						Метки
+					</div>
+					<br>
+					<label>Заголовок страницы</label><br />
+					<input type="text" id="admin-edit-metat" name="meta_t" placeholder="Добавить title" value="<?php echo $article['meta_t']; ?>"><br />
+					<br>
+					<label>Введите ключевые слова</label><br />
+					<input type="text" id="admin-edit-metak" name="meta_k" placeholder="Добавить keywords" value="<?php echo $article['meta_k']; ?>"><br />
+					<br>
+					<label>Введите описание</label><br />
+					<textarea id="admin-edit-metad" name="meta_d" placeholder="Добавить keywords"><?php echo $article['meta_d']; ?></textarea><br />
+					<p>&nbsp;</p>
+				</div>
+				<div id="admin-edit-right-first">
+					<div class="admin-edit-head">
+						Картинка
+					</div>
+					<br>
+					<input type="hidden" value="<?php echo isset($article['id'])? $article['id']: '0';?>" id="admin-article-image-id"/>
+					<input type="file" id="admin-article-image-uploader" name="artimage"/>
+					<img src="<?php echo isset($article['image'])? URL . 'img_uploaded/articles/'.$article['image'] : ''; ?>" id="admin-article-image">
+				</div>
+			</div>
+			<div id="js-article-submit" style="cursor: pointer; cursor: hand;">Сохранить</div>
+		</form>
+					<div  style="float: left; margin-top:10px; margin-left: 15px;"><button onclick="toggleArea();">Включить/Выключить NICEditor</button></div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<?php echo $this->headTitle(); ?>
+		<?php echo $this->headMeta(); ?>
+		<?php echo $this->headLink(); ?>
+		<?php echo $this->headScript(); ?>		
+	</head>
+	<body>	
+	<div class="section">
+		<div id="header">
+			<a id="logo" href="/"></a>
+			<div id="admin-menu">
+				<a class="" id="profile" href="<?php echo URL . 'admin/profile'; ?>">Мой профиль</a>
+				<a class="" id="articles" href="<?php echo URL . 'articles/read/apage/1'; ?>">Статьи</a>
+				<a class="" id="projects" href="<?php echo URL . 'projects/read/apage/1'; ?>">Портфолио</a>
+			</div>
+		</div>
+	</div>
+		
+	<?php print_r($this->layout()->content); ?>
+	
+	<div class="section">	
+		<div id="footer">
+		</div>
+	</div>
+	</body>
+</html>

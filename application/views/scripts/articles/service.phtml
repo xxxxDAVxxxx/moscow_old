@@ -1,0 +1,29 @@
+	<?php
+		if (isset($this->service)) { 
+	?>
+	<div id="view_service_item">
+		<div id="service_logo_div1" class="service_logo_div">
+			<a id="service_logo1" class="service_logo" href="<?php echo URL."services/"; ?>">
+				<img src="<?php echo URL."img_uploaded/articles/".$this->service['image']; ?>" />
+			</a>
+		</div>
+		<p id="view_service_title"><?php echo $this->service['title']; ?></p>
+		<div id="view_service_text">
+			<?php echo $this->service['content']; ?>
+			<a href="<?php echo URL."services/"; ?>" class="back_link"><span>вернуться</span></a>
+		</div>
+	</div>
+	<?php 
+		}
+/*$text = '
+<p>Параграф.</p>
+<!-- Comment -->
+Еще немного текста';
+
+echo strip_tags($text);
+
+echo "\n\n-------\n";
+
+// не удалять <p>
+echo strip_tags($text, '<p>');*/
+	?>

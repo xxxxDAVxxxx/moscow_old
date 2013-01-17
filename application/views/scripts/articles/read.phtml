@@ -1,0 +1,93 @@
+	<div class="section">
+		<div id="admin-biblio">
+			<img src="<?php echo URL . 'images/admin_red_zap_h1.png';?>">
+			<h1>Редактирование записи</h1><br />
+			<a href="<?php echo URL . 'articles/create';?>"><img src="<?php echo URL . 'images/admin_red_zap_submit.png';?>" style="float:both; margin-left: 15px;"></a><br>
+			<form action="">
+				<a id="articles_type_link" <?php if(!isset($_GET['type'])) echo 'style="background-color:#CCC;"'; ?> href="http://atcompany.com.ua/articles/read/apage/1">Все статьи</a>
+				<a id="articles_type_link" <?php if(isset($_GET['type']) && $_GET['type']=='news') echo 'style="background-color:#CCC;"'; ?>  href="http://atcompany.com.ua/articles/read/apage/1?type=news">Новости</a>
+				<a id="articles_type_link" <?php if(isset($_GET['type']) && $_GET['type']=='services') echo 'style="background-color:#CCC;"'; ?>  href="http://atcompany.com.ua/articles/read/apage/1?type=services">Услуги</a>
+				
+				<table class="admin-view-items" border="1" cellspacing="0" bordercolor="#dfdfdf" rules="rows">
+					<thead class="admin-view-items-head">
+  						<tr>
+  							<td class="admin-id-column">Id</td>
+   							<td class="admin-title-column">Запись</td>
+   							<td class="admin-image-column">Картинка</td>
+   							<td class="admin-date-column">Дата создания (изменения)</td>
+   							<td class="admin-type-column">Категория</td>
+   							<td class="admin-biblio-action">Действия</td>
+  						</tr>
+ 					</thead>
+ 					<tbody>
+ 						<?php foreach ($this->data['articles'] as $key => $article) { ?>
+ 							<tr valign="top">
+								<td class="admin-id-column">
+									<?php echo $article['id']; ?>					
+								</td>
+								<td class="admin-title-column">		
+									<?php if($article['type']=='services'){ ?>				
+										<a href="<?php echo URL . "services/{$article['slug']}"; ?>" rel="external" ><?php echo $article['title']; ?></a>							
+									<?php }else{?>
+										<a href="<?php echo URL . "articles/inner/{$article['slug']}"; ?>" rel="external" ><?php echo $article['title']; ?></a>							
+									<?php }?>
+								</td>
+								<td class="admin-image-column"><img src="<?php echo URL."img_uploaded/articles/".$article['image']; ?>"/></td>
+								<td class="admin-date-column"><p><?php echo $article['timestamp']; ?><br/></p></td>
+								<td class="admin-type-column">
+									<?php echo $article['type']; ?>					
+								</td>
+								<td class="admin-biblio-action">
+									<a href="<?php echo URL . "articles/read/{$article['id']}"?>" title="Редактировать"><img src="<?php echo URL . 'images/action_edit.png'?>" class="action-edit"></a>
+									&nbsp
+									<a href="<?php echo URL . "articles/delete/".$article['id'];
+										if($article['type']){echo "?type=".$article['type'];}
+									?>" title="Удалить"><img src="<?php echo URL . 'images/action_delete.png'?>" class="action-delete"></a>
+								</td>
+							</tr>		
+ 						<?php } ?>
+  					</tbody>
+					<tfoot>
+						<tr>
+   							<td class="admin-id-column">Id</td>
+   							<td class="admin-title-column">Запись</td>
+   							<td class="admin-image-column">Картинка</td>
+   							<td class="admin-date-column">Дата создания (изменения)</td>
+   							<td class="admin-type-column">Категория</td>
+   							<td class="admin-biblio-action">Действия</td>
+  						</tr>
+  					</tfoot>
+				</table> 
+			</form>
+		</div>
+		<div id=nav_section>
+			<div id="projects_page_nav">
+				<?php
+					
+					if($this->type !== ''){
+						$type="?type=".$this->type;
+					}else{
+						$type='';
+					}
+					if(isset($this->data['prev'])&& $this->data['prev']){
+						echo "<a href=\"".URL."articles/
+						read/apage/".($this->page-1).$type."\">НАЗАД</a><span>&nbsp&nbsp&nbsp&nbsp</span>";
+					}
+					if(isset($this->countPage) && is_numeric($this->countPage) && ($this->countPage>1)){
+						for ($i = 1; $i <= $this->countPage; $i++) {
+		   					 echo "<a ";
+		   					 if($i==$this->page){
+		   					 	echo " class=\"project_nav_item_active\"";
+		   					 }
+		   					 echo " href=\"".URL."articles/
+						read/apage/".$i.$type."\">$i</a><span>&nbsp</span>";
+						}
+					}
+					if(isset($this->data['next'])&& $this->data['next']){
+						echo "<span>&nbsp&nbsp&nbsp</span><a href=\"".URL . "articles/
+						read/apage/".($this->page+1).$type."\">ВПЕРЕД</a>";
+					}
+				?>
+			</div>
+		</div>
+	</div>

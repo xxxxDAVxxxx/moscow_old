@@ -1,0 +1,92 @@
+
+		<div id="project_view">
+			<p id="project_title">
+				<?php echo $this->content['title']; ?>
+			</p>
+			<div id="project_view_content">
+			<table class="project_view_table" cellpadding="0" cellspacing="0">
+				<tr>
+				<?php if(isset($this->content['image'][0])) { ?>
+					<td>
+						<div id="project_left_col">
+							<div id="project_left_col_div">
+								<img id="view_project_img" src="<?php echo URL."img_uploaded/projects/".$this->content['image'][0]['file_name']; ?>" />
+							</div> 
+							<div id="image_description">
+								<?php echo $this->content['image'][0]['title']; ?>
+							</div>
+						</div>
+					</td>
+				<?php } ?>
+				<td>
+				<div id="project_right_col">
+					<!--<div id="project_view_info">
+						<hr/>
+						<div>
+							<ul>
+								 
+								<li class="project_info_item">
+									<span class="project_info_name">ƒата заказа:</span>
+									<span class="project_info_text"><?php echo $this->content['order_date']; ?></span>
+								</li>
+								
+								<li class="project_info_item">
+									<span class="project_info_name">—татус:</span>
+									<span class="project_info_text"><?php echo $this->content['status']; ?></span>
+								</li>
+							</ul>
+						</div>
+						<hr/>
+					</div>-->
+					<div id="project_view_text">
+						<hr/>
+						<p>
+							<?php echo $this->content['content']; ?>
+						</p>	
+						<hr/>					
+					</div>
+					<div id="project_images">
+						<div class="image_carousel">
+							<a class="prev" id="foo1_prev" href="#"><img src="http://atcompany.com.ua/img/button-up.png" /></a>
+							<div id="foo1">
+								<?php
+									if (isset($this->content['image'])) { 
+										foreach($this->content['image'] as $key => $image) { 		
+								?> 
+									<img class="project_images_item" src="<?php echo URL.'img_uploaded/projects/'.$image['file_name']; ?>" alt="<?php echo $image['title']; ?>" style="height:130px;max-width:180px;margin:0 auto;margin-top:20px;">
+								<?php }} ?>
+							</div>
+							<div class="clearfix"></div>
+							<a class="next" id="foo1_next" href="#"><img src="http://atcompany.com.ua/img/button-down.png" /></a>
+						</div>
+					</div>
+					
+				</div>
+				</td>
+				</tr>
+				</table>
+				<div id="project_view_separator"></div>
+			</div>
+		</div>
+		<div id="projects_nav">
+			<div id="project_nav_back">
+				<?php if($this->content['prev']['pslug']) {?> 
+					<a id="project_nav_link_back" class="project_nav_link" href="<?php echo URL."projects/view/".$this->content['prev']['pslug']; ?>"><span><?php echo substr($this->content['prev']['title'],0,35)." ...";?></span></a>
+				<?php } ?>
+			</div>
+			<div id="project_nav_refresh">
+				<p>¬ернутьс€ к списку проектов</p>
+				<a id="project_nav_link_refresh" class="project_nav_link" href="<?php echo URL."projects/page/".$this->content['page_of_pro']; ?>"></a>
+			</div>
+			<div id="project_nav_forward">
+				<?php if($this->content['next']['pslug']) {?> 
+					<a id="project_nav_link_forward" class="project_nav_link" href="<?php echo URL."projects/view/".$this->content['next']['pslug']; ?>"><span><?php echo substr($this->content['next']['title'],0,35)." ...";?></span></a>
+				<?php } ?>
+				<!-- <?php  $yo=json_decode(iconv('CP1251','UTF-8','[["1_1.jpg","впрвп"],["1_2.jpg","gdf"],["1_3.jpg","gdffdggfd"]]'));
+				print_r($yo[0][1]);
+				echo "<br>json<br>";echo "<br>";$img = array(array("file_name" => "1_1.jpg", "title" => "Ёлементы дизайна жилой квартиры"),array("file_name" => "1_2.jpg", "title" => "Ёлементы дизайна жилой квартиры2"),array("file_name" => "1_3.jpg", "title" => "Ёлементы дизайна жилой квартиры3"));print_r($img);echo"<br>"; $img=serialize($img);echo $img;echo"<br>";$img=unserialize($img);print_r($img);?>
+				 -->
+			</div>
+
+		</div>
+		

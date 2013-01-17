@@ -1,0 +1,46 @@
+	<div id="project_items">
+		<ul>
+			<?php
+				if (isset($this->data['projects'])) { 
+					foreach($this->data['projects'] as $key => $project) { 		
+			?> 
+			<li class="project_item">
+					<?php if($project['image']){ $project['image']=unserialize($project['image']);
+							if (isset($project['image'][0])){?>
+							<a href="<?php echo URL . 'projects/view/'.  $project['pslug'] ; ?>" class="project_img_link">
+								<img src="<?php echo URL."img_uploaded/projects/".$project['image'][0]['file_name']."?rand=".rand(); ?>" class="project_preview_img"/>
+							</a>
+					<?php }}?>
+							<a class="project_preview_title" href="<?php echo URL . 'projects/view/'.  $project['pslug'] ; ?>"><?php echo $project['title']; ?></a>
+							<p class="project_preview_content">
+								<span class="project_preview_text"><?php echo substr(strip_tags($project['content']), 0, 200); ?></span>
+								<a class="project_link" href="<?php echo URL . 'projects/view/'.  $project['pslug'] ; ?>"><img src="http://atcompany.com.ua/img/points.png"/></a>
+							</p>
+			</li>
+			<?php
+					}
+				} 		
+			?> 
+		</ul>
+		<div id="projects_page_nav">
+			<?php
+				if(isset($this->data['prev'])&& $this->data['prev']){
+					echo "<a href=\"".URL."projects/
+					page/".($this->page-1)."\">мюгюд</a><span>&nbsp&nbsp&nbsp&nbsp</span>";
+				}
+				if(isset($this->countPage) && is_numeric($this->countPage) && ($this->countPage>1)){
+					for ($i = 1; $i <= $this->countPage; $i++) {
+	   					 echo "<a ";
+	   					 if($i==$this->page){
+	   					 	echo " class=\"project_nav_item_active\"";
+	   					 }
+	   					 echo " href=\"".URL."projects/page/".$i."\">$i</a><span>&nbsp</span>";
+					}
+				}
+				if(isset($this->data['next'])&& $this->data['next']){
+					echo "<span>&nbsp&nbsp&nbsp</span><a href=\"".URL . "projects/page/".($this->page+1)."\">боепед</a>";
+				}
+			?>
+		</div>
+	</div>
+	

@@ -1,0 +1,77 @@
+	<div class="section">
+		<div id="admin-biblio">
+			<img src="<?php echo URL . 'images/admin_red_zap_h1.png'?>">
+			<h1>Редактирование записи</h1><br />
+			<a href="<?php echo URL . 'projects/create'?>"><img src="<?php echo URL . 'images/admin_red_zap_submit.png'?>" style="float:both; margin-left: 15px;"></a><br>
+			<form action="">
+				<h2>Все записи</h2>
+
+				<table  border="1" cellspacing="0" bordercolor="#dfdfdf" rules="rows">
+					<thead>
+  						<tr>
+  							<td class="admin-id-column">Id</td>
+   							<td class="admin-title-column">Проект</td>
+   							<td class="admin-image-column">Картинка</td>
+   							<td class="admin-date-column">Дата заказа</td>
+   							<td class="admin-type-column">Статус</td>
+   							<td class="admin-biblio-action">Действия</td>
+  						</tr>
+ 					</thead>
+ 					<tbody>
+ 						<?php foreach ($this->data['projects'] as $key => $project) { ?>
+ 							<tr valign="top">
+								<td class="admin-id-column"><?php echo $project['id']; ?></td>
+								<td class="admin-title-column">					
+									<a href="<?php echo URL . "projects/view/".$project['pslug']; ?>" rel="external" ><?php echo $project['title']; ?></a>							
+								</td>
+								<td class="admin-image-column"><img src="<?php $project['image']=unserialize($project['image']); echo URL."img_uploaded/projects/".$project['image'][0]['file_name']; ?>"/></td>
+								
+								<td class="admin-date-column"><?php echo $project['order_date']; ?></td>
+								<td class="admin-type-column"><?php echo $project['status']; ?></td>
+								
+								<td class="admin-biblio-action">
+									<a href="<?php echo URL . "projects/read/{$project['id']}"?>" title="Редактировать"><img src="<?php echo URL . 'images/action_edit.png'?>" class="action-edit"></a>
+									&nbsp
+									<a href="<?php echo URL . "projects/delete/".$project['id']; ?>" title="Удалить"><img src="<?php echo URL . 'images/action_delete.png'?>" class="action-delete"></a>
+								</td>
+							</tr>		
+ 						<?php } ?>
+  					</tbody>
+					<tfoot>
+						<tr>
+   							<td class="admin-id-column">Id</td>
+   							<td class="admin-title-column">Проект</td>
+   							<td class="admin-image-column">Картинка</td>
+   							<td class="admin-date-column">Дата заказа</td>
+   							<td class="admin-type-column">Статус</td>
+   							<td class="admin-biblio-action">Действия</td>
+  						</tr>
+  					</tfoot>
+				</table> 
+			</form>
+		</div>
+		<div id=nav_section>
+			<div id="projects_page_nav">
+				<?php
+					if(isset($this->data['prev'])&& $this->data['prev']){
+						echo "<a href=\"".URL."projects/
+						read/apage/".($this->page-1)."\">НАЗАД</a><span>&nbsp&nbsp&nbsp&nbsp</span>";
+					}
+					if(isset($this->countPage) && is_numeric($this->countPage) && ($this->countPage>1)){
+						for ($i = 1; $i <= $this->countPage; $i++) {
+		   					 echo "<a ";
+		   					 if($i==$this->page){
+		   					 	echo " class=\"project_nav_item_active\"";
+		   					 }
+		   					 echo " href=\"".URL."projects/
+						read/apage/".$i."\">$i</a><span>&nbsp</span>";
+						}
+					}
+					if(isset($this->data['next'])&& $this->data['next']){
+						echo "<span>&nbsp&nbsp&nbsp</span><a href=\"".URL . "projects/
+						read/apage/".($this->page+1)."\">ВПЕРЕД</a>";
+					}
+				?>
+			</div>
+		</div>
+	</div>

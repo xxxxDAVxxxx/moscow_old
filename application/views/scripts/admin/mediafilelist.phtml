@@ -1,0 +1,55 @@
+	<div class="section">
+		<div id="admin_biblio">
+			<img src="<?php echo URL . 'images/admin_biblio_h1.png'?>">
+			<h1>Библиотека медиафайлов</h1>
+			<form action="">
+				<h2>Все файлы</h2>
+				<select size="1" name="admin_biblio_time">
+					<option value="0">За все время</option>
+				</select>
+				<select size="1" name="admin_biblio_page">
+					<option value="0">На всех страницах</option>
+				</select>
+				<table  border="1" cellspacing="0" bordercolor="#dfdfdf" rules="rows">
+					<thead>
+  						<tr>
+   							<td class="admin_biblio_checkbox"><input type="checkbox" name="all"></td>
+   							<td class="admin_biblio_image"></td>
+   							<td class="admin_biblio_filename">Файл</td>
+   							<td class="admin_biblio_author">Автор</td>
+   							<td class="admin_biblio_attach">Прикреплено к</td>
+   							<td class="admin_biblio_date">Дата</td>
+  						</tr>
+ 					</thead>
+ 					<tbody>
+ 						<tr valign="top">
+   							<td class="admin_biblio_checkbox"><input type="checkbox" name="1"></td>
+   							<td class="admin_biblio_image"><img src="<?php echo URL . 'images/admin_sample1.png'?>"></td>
+   							<td class="admin_biblio_filename"><a>stairway_to_heaven_by_joodlezz-d34uizz</a><p>JPG</p></td>
+   							<td class="admin_biblio_author"><p>admin</p></td>
+   							<td class="admin_biblio_attach"><p>(Не прикреплено к записям)</p><a>Прикрепить</a></td>
+   							<td class="admin_biblio_date"><p>1 минута назад</p></td>
+  						</tr>
+  						<tr valign="top">
+   							<td class="admin_biblio_checkbox"><input type="checkbox" name="1"></td>
+   							<td class="admin_biblio_image"><img src="<?php echo URL . 'images/admin_sample2.png'?>"></td>
+   							<td class="admin_biblio_filename"><a>snow_rabbit_by_joodlez-d38ihr4</a><p>JPG</p></td>
+   							<td class="admin_biblio_author"><p>admin</p></td>
+   							<td class="admin_biblio_attach"><p>(Не прикреплено к записям)</p><a>Прикрепить</a></td>
+   							<td class="admin_biblio_date"><p>1 минута назад</p></td>
+  						</tr> 					
+  					</tbody>
+					<tfoot>
+						<tr>
+   							<td class="admin_biblio_checkbox"><input type="checkbox" name="all"></td>
+   							<td class="admin_biblio_image"></td>
+   							<td class="admin_biblio_filename">Файл</td>
+   							<td class="admin_biblio_author">Автор</td>
+   							<td class="admin_biblio_attach">Прикреплено к</td>
+   							<td class="admin_biblio_date">Дата</td>
+  						</tr>
+  					</tfoot>
+				</table>
+			</form>
+		</div>
+	</div>

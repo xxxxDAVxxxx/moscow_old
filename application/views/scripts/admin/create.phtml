@@ -1,0 +1,35 @@
+<?php 
+	$seo = $this->read;		
+?>
+<div class="section">
+	<div id="admin-edit">
+		<img src="<?php echo URL . 'images/admin_new_zap_h1.png'; ?>">
+		<h1><?php echo (isset($seo['id']) ? 'Редактирование записи' : 'Добавление новой записи');?></h1>
+		<div id="js-create-result"></div>
+		<form method="post" action="">
+			<div id="admin-edit-left">
+				<p>Заголовок<span id="red-star">*</span></p>
+				<input type="text" id="js-seo-name" name="title" value="<?php echo (isset($seo['title']) ? $seo['title'] : '');?>"><br>
+				<label class="error" id="js-seo-slag">Введите слаг для страницы</label><br>
+				<?php if (isset($seo['id'])) { ?>
+					<input type="hidden" name="separator" id="js-seo-id" value="<?php echo $seo['id']; ?>">
+				<?php } ?>
+					<p>Title страницы<span id="red-star">*</span></p>
+					<input type="text" id="admin-edit-metat" name="meta_t" placeholder="Добавить title" value="<?php echo (isset($seo['meta_t']) ? $seo['meta_t'] : '');?>">
+					<label class="error" id="js-seo-title">Введите title</label><br>
+					<p>Введите ключевые слова<span id="red-star">*</span></p>
+					<input type="text" id="admin-edit-metak" name="meta_k" placeholder="Добавить keywords" value="<?php echo (isset($seo['meta_k']) ? $seo['meta_k'] : '');?>">
+					<label class="error" id="js-seo-keyw">Введите keywords</label><br>
+					<p>Введите описание<span id="red-star">*</span></p>
+					<textarea id="admin-edit-metad" name="meta_d" placeholder="Добавить description"><?php echo (isset($seo['meta_d']) ? $seo['meta_d'] : '');?></textarea>
+					<label class="error" id="js-seo-desc">Введите description</label><br>
+					<p>&nbsp;</p>
+				</div>
+			</div>
+			<div id="admin-edit-right">
+				<div id="admin-edit-right-first">		
+			</div>
+			<div id="js-seo-submit" style="cursor: pointer; cursor: hand;">Сохранить</div>
+		</form>	
+	</div>
+</div>
