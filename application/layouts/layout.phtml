@@ -57,7 +57,14 @@
 						<?php echo $this->layout()->content; ?>
 					</div>
 					<div id="right">
-						<?php echo $this->action('index', 'auth'); ?>
+						<?php 
+							if($this->username){
+								echo $this->partial('partial/logined.phtml',array(
+													    'username' => $this->username));
+							}else{
+								echo $this->partial('partial/not_logined.phtml');
+							}
+						?> 
 						<a class="banner" href="#"><img src="http://moscow.atplus.com.ua/img/banner.png"></a>
 						<a class="banner" href="#"><img src="http://moscow.atplus.com.ua/img/banner.png"></a>
 						<div id="context-commercial">
@@ -73,92 +80,9 @@
 			</div>
 		</div>
 		<?php //echo $this->action('register', 'auth'); ?>
-		<div id="registration-bg">
-		</div>
-		<div id="registration">
-			<div id="registration-center">
-				<div id="registration-cancel"></div>
-				<div id="registration-form">
-					<p class="registration-form-title">
-						Регистрация собственников недвижимости
-					</p>
-					<p class="form-for-user-info" id="registration-form-required-info">
-						Поля, отмеченные <span>*</span> обязательны к заполнению
-					</p>
-					<p class="registration-caption">
-						*Название компании:
-						<br><span class="reg-error"></span>
-					</p>
-					<input class="registration-input" id="company-name" name="company-name" type="text">
-					<br>
-					<p class="registration-caption">
-						*Пароль:
-						<br><span class="reg-error"></span>
-					</p>
-					<input class="registration-input" id="company-pass" name="company-pass" type="password">
-					<br>
-					<p class="registration-caption">
-						*Пароль повторно:
-						<br><span class="reg-error"></span>
-					</p>
-					<input class="registration-input" id="company-pass-confirm" name="company-pass-confirm" type="password">
-					<br>
-					
-					<p class="registration-caption">
-						Описание компании:
-					</p>
-					<textarea class="registration-textarea" id="company-desc" name="company-desc"></textarea>
-					<br>
-					<p class="registration-caption">
-						*E-mail:
-						<br><span class="reg-error"></span>
-					</p>
-					<input class="registration-input" id="company-email" name="company-email" type="text">
-					<br>
-					<!-- <p class="registration-caption">
-						Наименование объекта:
-					</p>
-					<input class="registration-input" id="object-name" name="object-name" type="text">
-					<br> -->
-					<p class="registration-caption">
-						Телефон:
-					</p>
-					<input class="registration-input" id="company-phone" name="company-phone" type="text">
-					<br>
-					<p class="registration-caption">
-						Skype:
-					</p>
-					<input class="registration-input" id="company-skype" name="company-skype" type="text">
-					<br>
-					<p class="registration-caption">
-						ICQ:
-					</p>
-					<input class="registration-input" id="company-icq" name="company-icq" type="text">
-					<br>
-					<p class="registration-caption">
-						*Ответственное лицо:
-						<br><span class="reg-error"></span>
-					</p>
-					<input class="registration-input" id="responsible-person" name="responsible-person" type="text">
-					<br>
-					<p class="registration-caption">
-						Название сайта <span class="form-for-user-info">(если имеется)</span>
-					</p>
-					<input class="registration-input" id="site" name="site" type="text"/>
-					<br>
-					<p class="registration-caption-license">
-						<input id="license-check" name="license-check" type="checkbox"/>
-						Я ознакомился и согласен с правилами <a href="#">лицензионного соглашения</a>
-						<br><span class="reg-error"></span>
-					</p>
-					<div id="registration-submit">
-					</div>
-					<!-- <p id="submit-user-info" class="form-for-user-info">
-						После завершения регистрации с Вами свяжется наш менеджер
-					</p> -->
-					
-				</div>
-			</div>
-		</div>
+		<?php if(!$this->username){
+			echo $this->partial('partial/registration.phtml');
+		}
+		?>      
 	</body>
 </html>

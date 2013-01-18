@@ -16,12 +16,14 @@
 require_once APPLICATION_PATH . '/controllers/AbstractController.php';
 
 class AuthController extends AbstractController {	
+	
+	protected $oAuth;
+	
 	/**
 	 * Setup of global variables for this class
 	 * 
 	 * @return void
 	 */
-	protected $oAuth;
 	public function init() {
 		parent::init();	
 		require_once APPLICATION_PATH . '/models/Auth/Instance.php';	
@@ -33,18 +35,22 @@ class AuthController extends AbstractController {
  
     public function indexAction() {	
     	if ($this->auth) {
-    		$this->view->user=$this->auth;
+    		$this->view->user = $this->auth;
     	}
     }   
     
  	public function loginAction() {	
  		try{
- 			$userId=$this->oAuth->login($this->_getAllParams());
- 			if($userId){
+ 			
+ 			$user = $this->oAuth->login(array(
+				'email' => $this->_getParam('email'),
+ 				'password' => $this->_getParam('password'), 			
+ 			));
+ 			if($user){
 	 			//$this->jsonp(array(
 	 			//		'success' => true
 	 			//)); 					
- 				setcookie('AT_AUTH', $userId, time() + (3600 * 24 * 30), '/');;
+ 				setcookie('AT_AUTH', $user, time() + (3600 * 24 * 30), '/');;
 	 			//$action = $this->getRequest()->getActionName();
 	 			//$controller = $this->getRequest()->getControllerName();
 	 			//$this->_redirect("http://moscow.atplus.com.ua/");
@@ -64,15 +70,33 @@ class AuthController extends AbstractController {
     }
     
     public function logoutAction() {	
-    	
+    	try{
+  			$this->oAuth->logout();
+
+ 			$this->jsonp(array(
+ 					'success' => true
+ 			));
+    	}catch (Exception $e) {
+ 			$this->jsonp(array(
+ 					'success' => false,
+ 					'error' => $e->getMessage()
+ 			));
+ 		}
     }
     
     public function registerAction() {
-    	try{	
-    		$this->oAuth->register($this->_getAllParams());
-    		$this->jsonp(array(
-    			'success' => true	
-    		));
+    	try{
+    		$register = $this->oAuth->register($this->_getAllParams());
+    		if(!$register){
+    			$this->jsonp(array(
+    				'success' => true	
+    			));
+    		}else{
+    			$this->jsonp(array(
+    				'success' => false,
+    				'error' => $register	
+    			));
+    		}
     	} catch (Exception $e) {
     		$this->jsonp(array(
     			'success' => false,

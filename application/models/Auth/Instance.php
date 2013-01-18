@@ -30,6 +30,17 @@ class Auth_Instance extends AbstractModel {
 			'skype' => urldecode($data['skype']),
 			'icq' => urldecode($data['icq'])
 		);
+		$requiredFields = array('name', 'password', 'email', 'person');
+		foreach ($CompanyData as $key => $value) {		
+			if (in_array($key, $requiredFields)) {
+				if($value==""){return "Some of a required fields are empty";}
+				//$s = mb_detect_encoding($value);
+				//$CompanyData[$key] = iconv($s, 'CP1251//TRANSLIT', $value);
+			}
+		}
+		if(!preg_match('|([a-z0-9_\.\-]{1,20})@([a-z0-9\.\-]{1,20})\.([a-z]{2,4})|is', $CompanyData['email'])){
+			return "Email is not valid!";
+		};
 		$rusFields = array('name', 'password', 'email','desc', 'person', 'site', 'phone','skype','icq');
 		foreach ($CompanyData as $key => $value) {		
 			if (in_array($key, $rusFields)) {
@@ -37,33 +48,43 @@ class Auth_Instance extends AbstractModel {
 				$CompanyData[$key] = iconv($s, 'CP1251//TRANSLIT', $value);
 			}
 		}
-		$CompanyData['password']=md5($CompanyData['password']);
+		$CompanyData['password'] = md5($CompanyData['password']);
 		$this->oDb->insert('companies', $CompanyData);
 	}
 	
 	public function login($data) {
 		$LoginData = array(
-				'name' => urldecode($data['name']),
+				'email' => urldecode($data['email']),
 				'password' => urldecode($data['password'])
 		);
-		$rusFields = array('name', 'password');
+		$rusFields = array('email', 'password');
 		foreach ($LoginData as $key => $value) {
 			if (in_array($key, $rusFields)) {
 				$s = mb_detect_encoding($value);
 				$LoginData[$key] = iconv($s, 'CP1251//TRANSLIT', $value);
 			}
 		}
-		$userId = $this->oDb->fetchOne($this->oDb->select()
-				->from('companies', array('id'))
-				->where("name = ?", $LoginData['name'])
+		$user = $this->oDb->fetchRow($this->oDb->select()
+				->from('companies', array('id','person'))
+				->where("email = ?", $LoginData['email'])
 				->where("password = ?", md5($LoginData['password']))
+		);
+		return $user ? base64_encode($user['id']."|".$user['person']) : false;//$user['id']." ".$user['person']//)
+	}
+	
+	public function logout(){
+		setcookie('AT_AUTH', '', 0, '/', '');
+	}
+	
+	public function checkUsername($data){
+		$userId = $this->oDb->fetchOne($this->oDb->select()
+				->from('companies')
+				->where("id = ?", $data['id'])
+				->where("person = ?", $data['person'])
 		);
 		return $userId ? $userId : false;
 	}
-	
-	
-	
-	
+		
 /*******************************************На удаление*************************************************/	
 	
 	

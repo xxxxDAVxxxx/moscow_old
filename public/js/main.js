@@ -122,13 +122,14 @@ $(document).ready(function() {
 	        }
 	        , success: function(response) {
 	        	if (response.success) {
-	        		alert("success");
+	        		//alert("success");
 	        		//$('#form_link').hide();
 		        	//$('#js-mail-result').html("Спасибо, Ваше письмо успешно отправлено!");
 		        	//$('#js-mail-result').show();
 	        	}
 	        	else {
-	        		alert("error");
+	        		$(".registration-form-title").children(".reg-error").html(response.error);
+	        		//alert("error");
 	        		//$('#js-mail-result').html("Ошибка!");
 	        		//$('#js-mail-result').show();
 	        	}
@@ -149,19 +150,19 @@ $(document).ready(function() {
 	    	return false;
 	    }
 		
-	    var name=$("input#auth-login").val();
+	    var email=$("input#auth-login").val();
 	    var pass=$("input#auth-password").val();
 	    
 		$.ajax({
 			dataType: 'jsonp'	
 			, url: URL+'auth/login'
 			, data: {
-				'name': encodeURIComponent(name),
+				'email': encodeURIComponent(email),
 				'password': encodeURIComponent(pass)
 	        }
 	        , success: function(response) {
 	        	if (response.success) {
-	        		window.location.href = URL;
+	        		window.location.href = window.location.href;
 	        		//alert("success");
 	        		//$('#form_link').hide();
 		        	//$('#js-mail-result').html("Спасибо, Ваше письмо успешно отправлено!");
@@ -171,6 +172,20 @@ $(document).ready(function() {
 	        		alert("error");
 	        		//$('#js-mail-result').html("Ошибка!");
 	        		//$('#js-mail-result').show();
+	        	}
+	        }			
+		});
+	});
+	$('#logined-logout').click(function(){
+		$.ajax({
+			dataType: 'jsonp'	
+			, url: URL+'auth/logout'
+	        , success: function(response) {
+	        	if (response.success) {
+	        		window.location.href = window.location.href;
+	        	}
+	        	else {
+	        		alert("error");
 	        	}
 	        }			
 		});

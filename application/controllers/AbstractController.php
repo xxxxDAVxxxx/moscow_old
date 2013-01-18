@@ -32,21 +32,37 @@ abstract class AbstractController extends Zend_Controller_Action {
 	 * 
 	 * @return void
 	 */
-	public function init() {	
-		// auth data
-		$this->auth = isset($_COOKIE['AT_AUTH']) ? $_COOKIE['AT_AUTH'] : null;
-		
-		//database instances
-		$this->oDb = Zend_Registry::get('db');	
-		//head settings
-		$this->view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=windows-1251');
-		$this->view->headScript()
-			->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
-			->appendFile('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js')
-			//->appendFile(URL . 'js/jquery.carouFredSel-5.6.4-packed.js')
-			;
-		$this->view->headMeta()->setName('google-site-verification', '4ZjHlZFvV27sl-WNaEpsEyrCv7tdTvWgSaFoQzth0pA');
-		$this->view->setEncoding('windows-1251');
+	public function init() {
+		try{	
+			// auth data
+			//$this->auth =  ? $_COOKIE['AT_AUTH'] : null;
+			if(isset($_COOKIE['AT_AUTH'])){
+				$username=explode("|",base64_decode($_COOKIE['AT_AUTH']));
+				require_once APPLICATION_PATH . '/models/Auth/Instance.php';	
+				$Auth = new Auth_Instance();
+				$find = $Auth->checkUsername(array('id'=>$username[0],'person'=>$username[1]));
+				//print_r($find);exit();
+				if($find){
+					$this->auth = $_COOKIE['AT_AUTH'];
+					$this->view->username = $username[1];
+				}
+			}else{
+				$this->auth = null;
+			}
+			//database instances
+			$this->oDb = Zend_Registry::get('db');	
+			//head settings
+			$this->view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=windows-1251');
+			$this->view->headScript()
+				->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+				->appendFile('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js')
+				//->appendFile(URL . 'js/jquery.carouFredSel-5.6.4-packed.js')
+				;
+			$this->view->headMeta()->setName('google-site-verification', '4ZjHlZFvV27sl-WNaEpsEyrCv7tdTvWgSaFoQzth0pA');
+			$this->view->setEncoding('windows-1251');
+		} catch (Exception $e) {
+ 				print_r($e->getMessage());exit();
+ 		}
 	}
 	
 	/**

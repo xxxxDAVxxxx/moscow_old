@@ -654,3 +654,32 @@ p{
 			height:25px;
 		}
 /*****************************************END Auth Controller Room*******************************************/
+
+/*****************************************Partial Logined*******************************************/
+		
+		#logined-caption{
+			margin-top:15px;
+			margin-bottom:5px;
+			color:#757575;
+			font: 12px Verdana, Arial, Helvetica, Tahoma, sans-serif;
+		}
+		#logined-caption span{
+			font-weight:bold;
+		}
+		#logined-profile{
+			float:left;
+			width:75px;
+			height:25px;
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAZCAYAAAB5CNMWAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAPkSURBVHja7JlNTFxVFIC/9+Y95udNkKSlFIk0DJHGH6qxC0uXpnZlJGmCMTQlblzUuMF024hhUzXVGJNWu/M3xgSNjRtKdTViF5oUKJoaMIIpf7XSMm+YB/PmHhdv3mMGigyCCSTvJDdz7zkn555z7jnnnXtHE5ELwGlC2AguaiIip34uhK7YAD45HMEAECT0RgVg4HkrhEqdJRJ6q3JnhaG1mTQMnbVr0/C9J6NcnnL5bq6wO531xZH4urQXr+W2XTGRnXeIm4qszyfzfHMrH6zbG0w6G81tN8oTJ7vbWSLlBvhzEaEupvH+Uwl+vOPStscrhb/bind/c5h1PL7ug9F1ae0NJicPVAWyOxtNXk5VkXWFd24uMXKvQOsDEc4+FuOFwSwAdTGNc4fifDaxzNVZF4Bzh+KkknqZ3j7/l0ctekcdRu79t/TWAUTJhsPvx8pwPloJogh4OtI2L13LYhnQ/qCJKKGz0SRl6bz60yIdaRvbFbpbYogSWqt1Th6oovdGjo60zayj+PSPZTrSNgMzeV47GC3uJ5Tq290SwzI0L2WLOMuAD8eW6Ejb9N7IlfH7YVuJvfezXwdQIhsOP4JKcX5klfJcmV5GiZDJKwam8xzZa6BEOLbfZGA6z3SugBLh/K85UkmdJkvn8ZoIg3+5XJ931+z19Z/LWIZGk6UHNCVCe4OJIAzfLZTptVrP1fpVYut69hfTUFWWhkgZr9+fiaig+yjlsV1F0tAQ8X5tVwW0TLH0JQyh2dIZuuuu0sOTU8rnF4B9UXi23qRnOMvph+MBL4BlaMFavFgok/t6ayKYD8+79Ixk/6fWYVXNouQkA3zJfF9Mx3a9te0KVmRlr6SheQ7NK2YcRXMysqYeikgZnz8/80iCt3/JMpMrIKt4k4bm4UXK9POhZ9hmaN6lLqbzwdPVtO01GLyd30TNKm72b8O/QpbhSw1jxUEiQiqpc7y+iq8mHUSEK1NLHK+Pkkp69DOPJhjPFBhbcBnLuBytNQMaQrEWCaeaYszmFGMLbhC9/dNLxbUE8S0itNWa2K4EtJXzK7Gh2JJYxkqNrdT+bYssf96VivNKixfqfZMOfRNekf1ofJG6mM75w9UAjGdc3hrNICL033JoTkYCGsCJxhhdqTjjGZc3R+1A6Y/HF+m/5azR68RDUbqaE1y4mSWTV2u+1j688UQymP8wt0x6bqniNNRERJ7//s6We5D98QiX2mo4e32Bob/zW5J1qa2GvgmH/ilnx/RYl5/Zs33XnfvVrC1K3HFNqSYi8tzV2+EteQP49lht+OoQPv6FztoxL6UhVFrgw/8NK4OL/wwASbVnpPRJNYkAAAAASUVORK5CYII=");
+			cursor:pointer;
+		}
+		#logined-logout{
+			float:left;
+			width:51px;
+			height:25px;
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAZCAYAAACclhZ6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAANTSURBVHja7JhNbBtVEMd/6914HXsB05BYAaHmQ0qFKtICF4N6QpQTosqBk5vcQGpvReJYCZFbFcQBqdBcIyqkKuVDXCIFpEqhPSElobSqGlOSQtgkTWxkO7vr/RgOttcxtntEtZWR5vDm/968+e/OezO7iohcBs7R+fKFIiIy+Yvf8UzmXlPRAAShG0SjwqZ7yIh00ZvpsjSTwzTrGDJfp3sbxiVPuLrh8eO215lv5uqGy3d/uQBcGNN5f6SHW7seJU86j4yIhNhq3iPdp5JQhaIrXDweYzXvh2Rr8sGoDsBs1uHCMR1DU5j+zQYgFVP4/NU4n91zuLXrceaFHjJHowBs2cJs1uHXf+oF/OLxGC8/o4bjxS2P2azTlkwEQAJp0lr9qY3TfRqreR9zP6jYpBEP10lFJRCu3HcY0BXSR1QkEM4838O3f5a5ueOSPqKSORpl+rbFe0tFFk2XD4/pDESV0NeArvDVH+UQr/ltF28EIBBpUoDMUJRrpwyunTIYT6ps2QFxlRCXFuuqHAlEKLgBn961yQxF6dcVho0Icw8cAhHSz2ncfOSxnPMIRLj+0MG0A9J9augroSmYlt/kt1281TQLWvc7D2y+eehUUyTCx+MJMkNRvrxvgQhnh3XODlfSKlv0mbmzH6ZlzedaIWAlp3HplTgzd/dDu6GCaQcNe5dcQRBEAkYNFUNTWMm5DeneLtZ6mlUnH9Ra/amNTctnJedx4lmtYgPmfreYuJFn4kYeQ1M4PRhtOm8jRoRULMLMnRKTQ7HQXvQEQ1Ma9kxoSrjneFIlW/ApuEHDmW4Vaw1/LBn5T1Ankhore24VlxBPqOHk+pmp2j96KcH1DZvlPZdswWNyuELo5+0yb/T3cHowiogw8aJOqjfC0k4ZEeHtQZ2Fv516PAf8tov3sbfZ1EgvUyP1erOw6XD5Xqklni14zK9bTI3Gwyd4biyBafss75UBmN+wuJJOslbwWNp2SMUUzo/FOT8Wx7QCLt0uYu77fHLyKVK9kRA7KGsFj4XN1jeaIiLy7k+7T1S9mD75NMs5l/l1q8E++3qS+XWbhU27ac33b/Y9me2MHDivrdB28SoiIu8s7nR8X/bDW/2HXfMhmf/xS7M7ROmm/2b/DgD2H57w+cCFWAAAAABJRU5ErkJggg==");
+			margin-left:25px;
+			cursor:pointer;
+		}
+		
+/*****************************************END Partial Logined*******************************************/
