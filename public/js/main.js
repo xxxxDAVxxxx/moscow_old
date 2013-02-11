@@ -616,7 +616,7 @@ $(document).ready(function() {
 		});
 		
 	});
-	
+	//fgdfgdf       
 	// update object
 	$('#js-object-update-submit').click(function(){
 		var name = "Название объекта";
