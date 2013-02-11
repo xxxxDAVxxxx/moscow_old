@@ -1,0 +1,112 @@
+<p id="room-caption">Личный кабинет</p>
+<p id="room-objects-pages">Текущие страницы объектов:</p>
+<div id="object-page-link">
+	<a href="#">Название объекта</a>
+</div>
+<p id="room-create-caption">
+	Создание страницы объекта недвижимости
+</p>
+<p class="room-field-caption">Название</p>
+<input value="<?php echo $this->object['name']; ?>" type="text" id="js-object-name" class="room-field">
+<hr>
+<p class="room-field-caption">Описание</p>
+<textarea id="js-object-desc" class="room-field"><?php echo $this->object['desc']; ?></textarea>
+<hr>
+<p class="room-field-caption">Месторасположение</p>
+<input value="<?php echo $this->object['location']; ?>" type="text" id="js-object-location" class="room-field" />
+<hr>
+<p class="room-field-caption">Тип</p>
+<select id="js-object-type" class="room-field-file">
+	<option value="1">1</option>
+	<option value="2">2</option>	
+	<option value="3">3</option>
+</select>
+<hr>
+<p class="room-field-caption">Фотографии</p>
+<input type="file" id="room-file-photo" name="room-file-photo" class="room-field-file" />
+<br>
+<span class="file-upload-info">Формат: .jpg, .png не более 1Мб</span>
+<hr>
+<p class="room-field-caption">Видео (ссылка)</p>
+<input value="<?php echo $this->object['video']; ?>" type="text" id="js-object-video" name="room-file-video" class="room-field">
+<hr>
+<p class="room-field-caption">Описание объекта</p>
+<hr>
+<p class="room-field-sub-caption">Общая площадь (м<sup style="font:8px  Verdana, Arial, Helvetica, Tahoma, sans-serif;">2</sup>)</p>
+<input value="<?php echo $this->object['square']; ?>" type="text" id="js-object-square" name="room-object-square" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Кол-во этажей</p>
+<input value="<?php echo $this->object['floors']; ?>" type="text" id="js-object-floors" name="room-object-floors" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Класс</p>
+<select id="js-object-class" class="room-field-file">
+	<option value="A">A</option>
+	<option value="B">B</option>
+	<option value="C">C</option>
+</select>
+<hr>
+<div class="margin-top"></div>
+<p class="room-field-caption">Год постройки</p>
+<select id="js-object-year" class="room-field-file">
+	<?php for ($i = 1922; $i < date('Y'); $i++) {  ?>
+		<option value="<?php echo $i; ?>" <?php echo ($this->object['year']==$i)?'selected':'';?>><?php echo $i; ?></option>		
+	<?php } ?>
+</select>
+<hr>
+<p class="room-field-caption">
+	Удаленность от метро (км)
+</p>
+<input value="<?php echo $this->object['metro_remote']; ?>" type="text" id="js-object-metro-remote" name="room-from-metro" class="room-field">
+<hr>
+<p class="room-field-caption">Текущие арендаторы</p>
+<textarea type="text" id="js-object-arendators" name="room-arendators" class="room-field">
+<?php echo $this->object['buyer']; ?>
+</textarea>
+<hr>
+<p class="room-field-caption">Дополнительные услуги</p>
+<hr>
+<p class="room-field-sub-caption">Кафе</p>
+<input type="checkbox" id="room-service-cafe" name="room-service-cafe" class="room-field-checkbox"/>
+<hr>
+<p class="room-field-sub-caption">Салон красоты</p>
+<input type="checkbox" id="room-service-salon" name="room-service-salon" class="room-field-checkbox"/>
+<hr>
+<p class="room-field-sub-caption">Фитнес центр</p>
+<input type="checkbox" id="room-service-fitnes" name="room-service-fitnes" class="room-field-checkbox"/>
+<hr>
+<p class="room-field-sub-caption">Другое</p>
+<textarea id="room-service-other" name="room-service-other" class="room-field"></textarea>
+<hr>
+<div class="margin-top"></div>
+<p class="room-field-caption">Свободные помещения</p>
+<hr>
+<p class="room-field-sub-caption">Этаж</p>
+<input type="text" id="room-object-floor" name="room-object-floor" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Площадь</p>
+<input type="text" id="room-free-object-area" name="room-free-object-area" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Возможная дата заезда</p>
+<input type="text" id="room-free-object-date" name="room-free-object-date" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Отделка</p>
+<input type="text" id="room-free-object-wall" name="room-free-object-wall" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Планировка</p>
+<input type="file" id="room-file-planing" name="room-file-planing" class="room-field-file">
+<br>
+<span class="file-upload-info">Формат: .jpg, .png не более 1Мб</span>
+<hr>
+<p class="room-field-sub-caption">Стоимость (без НДС)</p>
+<input type="text" id="room-free-object-price" name="room-free-object-price" class="room-field">
+<hr>
+<p class="room-field-sub-caption">Отсутствуют</p>
+<input type="checkbox" id="room-no-object" name="room-no-object" class="room-field-checkbox">
+<hr>
+<div id="add-room"></div>
+
+<?php if(isset($this->object)){ ?>
+	<div id="js-object-update-submit"></div>
+<?php }else{?>
+	<div id="js-object-create-submit"></div>
+<?php }?>
