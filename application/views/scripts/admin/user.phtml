@@ -1,0 +1,59 @@
+<div class="section">
+	<div class="admin-block">
+		<ul class="list-wrapper">
+			<li>
+				<img src="<?php echo URL . 'images/admin_biblio_h1.png'?>" class="mini-image">
+			</li>
+			<li>
+				<h1>Список пользователей</h1>
+			</li>
+		</ul>
+		<table  border="1" cellspacing="0" bordercolor="#dfdfdf" rules="rows">
+			<thead>
+  				<tr>
+   					<td >ID</td>
+   					<td >Имя</td>
+   					<td >Заблокирован</td>
+   					<td >Действия</td>
+  				</tr>
+ 			</thead>
+ 			<tbody>
+ 				<?php 
+ 					foreach($this->user as $key => $val) {
+ 				?>
+ 					<tr id="<?php echo $val['id']; ?>">
+ 						<td ><?php echo $val['id']; ?></td>
+   						<td ><?php echo $val['name']; ?></td>
+   						<td ><?php echo ($val['block'])? 'да': 'нет'; ?></td>
+   						<td >
+   							<ul class="list-wrapper actions">
+   								<li>
+   									<a href="<?php echo URL. 'admin/user/mail?cid='. $val['id']; ?>" title="Написать письмо">
+   										<img src="<?php echo URL. 'images/action_edit.png'; ?>">
+   									</a>
+   								</li>
+   								<li>
+   									<a href="<?php echo URL. 'admin/user/block?cid='. $val['id']; ?>" title="Заблокирвоать">
+   										<img src="<?php echo URL. 'images/action_delete.png'; ?>">
+   									</a>
+   								</li>
+   							</ul>
+   						</td>
+   					</tr>
+				<?php 
+ 					}
+				?>	
+  			</tbody>
+			<tfoot>
+				<tr>
+					<td>ID</td>
+   					<td>Имя</td>
+   					<td>Заблокирован</td>
+   					<td>Действия</td>
+  				</tr>
+  			</tfoot>
+		</table>
+	</div>
+	<div class="admin-block">
+	</div>
+</div>
