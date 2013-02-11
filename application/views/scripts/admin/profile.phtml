@@ -9,42 +9,56 @@
 		 	}
 	}
 </script>	
-	<div class="section">
-		<div id="admin-profile">
-			<img src="<?php echo URL . "images/admin_profile_h1.png"?>">
-			<h1>Параметры профиля</h1>
-			<?php // print_r($this->page);?>
-			<form action="<?php echo URL . "admin/profile"?>" name="admin_change_profile">
-				<div>
-					<p>Имя<span id="red-star">*</span></p>
-					<input required name="profile-name" type="text" id="admin-profile-name" value="<?php echo $this->page['username']?>">
-				</div>
-				<div>
-				<p>Логин<span id="red-star">*</span></p>
-				<input required name="profile-login" type="text" id="admin-profile-login" value="<?php echo $this->page['email']?>">
-				</div>
-				<div>
-				<p>Пароль</p>
-				<input required name="profile-pass" type="password" id="admin-profile-pass" value="">
-				<input id="admin-profile-new-pass" type="checkbox" name="new-password" onchange='changepass()'>Новый пароль</p>
-				</div>
-				<div id="admin-div-profile-rep-pass">
-				<p>Повтор пароля</p>
-				<input name="profile-rep-pass" type="password" id="admin-profile-rep-pass">
-				</div>
-				<div>
-				<p>Дата регистрации</p>
-				<p class="admin-profile-info"><?php echo $this->page['timestamp']?></p>
-				</div>
-				<!--<div>
-				<p>Дата последнего входа</p>
-				<p class="admin_profile_info">2012-08-09 09:22:45</p>
-				</div>-->
-				<div>
-				<p>ID</p>
-				<p class="admin-profile-info"><?php echo $this->page['id']?></p>
-				</div>
-				<input type="image" id="admin-profile-submit"  src="<?php echo URL . "images/admin_profile_submit.png"?>">
-			</form>
-		</div>
+<?php 
+	$user = $this->user[0];
+?>
+<div class="section">
+	<div class="admin-block">
+		<ul class="list-wrapper">
+			<li>
+				<img src="<?php echo URL . "images/admin_profile_h1.png"?>" class="mini-image">
+			</li>
+			<li>
+				<h1>Параметры профиля</h1>
+			</li>
+		</ul>
+		<form action="<?php echo URL . "admin/profile"?>" name="admin_change_profile" class="admin-block info-list">
+			<p>
+				Имя
+				<span class="red-star">*</span>
+				<input required name="profile-name" type="text" id="admin-profile-name" value="<?php echo $user['name']?>">
+			</p>
+			<p>
+				E-mail
+				<span class="red-star">*</span>
+				<input required name="profile-login" type="text" id="admin-profile-login" value="<?php echo $user['email']?>">
+			</p>
+			<ul class="list-wrapper">
+				<li>
+					<p>
+						Пароль
+						<input required name="profile-pass" type="password" id="admin-profile-pass" value="">
+					</p>
+				</li>
+				<li>
+					<p>
+						<input id="admin-profile-new-pass" type="checkbox" name="new-password" onchange='changepass();'>
+						Новый пароль
+					</p>
+				</li>
+			</ul>
+			<div id="admin-div-profile-rep-pass">
+				<p>
+					Повтор пароля
+					<input name="profile-rep-pass" type="password" id="admin-profile-rep-pass">
+				</p>
+			</div>
+			<p>
+				ID
+				<span class="id"><?php echo $user['id']?></span>
+			</p>
+			<input name="profile-id" type="hidden" id="admin-profile-id" value="<?php echo $user['id']?>">
+			<input type="image" id="admin-profile-submit"  src="<?php echo URL . "images/admin_profile_submit.png"?>">
+		</form>
 	</div>
+</div>

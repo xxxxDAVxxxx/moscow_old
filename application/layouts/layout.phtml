@@ -11,7 +11,7 @@
 		<div id="body-wrapper">
 			<div id="header">
 				<div id="header-content">
-					<a href="#" id="main-logo">
+					<a href="<?php echo URL; ?>" id="main-logo">
 						<p id="main-logo-title">Nedvizhimost.com</p>
 						<p id="main-logo-desc">краткое описание деятельности</p>
 					</a>
@@ -27,7 +27,7 @@
 			<div id="main">
 				<div id="left">
 					<div id="main-left-menu">
-						<a href="#" class="main-left-menu-item" href="#">Главная</a>
+						<a href="<?php echo URL;?>" class="main-left-menu-item" href="#">Главная</a>
 						<a href="#" class="main-left-menu-item" href="#">Собственники</a>
 						<a href="#" class="main-left-menu-item" href="#">Аналитика</a>
 						<a href="#" class="main-left-menu-item" href="#">Исследования</a>
@@ -35,6 +35,7 @@
 						<a href="#" class="main-left-menu-item" href="#">Производственные комплексы</a>
 						<a href="#" class="main-left-menu-item" href="#">Другие помещения</a>
 						<a href="#" class="main-left-menu-item" href="#">Запросы на помещения</a>						
+						<a href="#" class="main-left-menu-item" href="#">Найти на карте</a>						
 					</div>
 					<a href="#" id="events">Мероприятия</a>
 					<ul id="best-realty-list">
@@ -58,9 +59,15 @@
 					</div>
 					<div id="right">
 						<?php 
-							if($this->username){
-								echo $this->partial('partial/logined.phtml',array(
-													    'username' => $this->username));
+							if($this->user_layout){
+								if($this->user_layout['activated']){
+									echo $this->partial('partial/logined.phtml',array(
+															'id' => $this->user_layout['id'],
+														    'username' => $this->user_layout['name']));
+								}else{
+									echo $this->partial('partial/not_activated.phtml',array(
+														    'username' => $this->user_layout['name']));
+								}
 							}else{
 								echo $this->partial('partial/not_logined.phtml');
 							}
@@ -80,7 +87,7 @@
 			</div>
 		</div>
 		<?php //echo $this->action('register', 'auth'); ?>
-		<?php if(!$this->username){
+		<?php if(!$this->user_layout){
 			echo $this->partial('partial/registration.phtml');
 		}
 		?>      

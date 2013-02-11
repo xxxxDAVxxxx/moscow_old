@@ -38,7 +38,7 @@ else
 $white = imagecolorallocate($image, 255, 255, 255); // background color white
 imagefilledrectangle($image,0,0,399,99,$white);
 
-imagettftext ($image, 30, 0, 10, 40, $color, $dir.$font, $_SESSION['random_number']);
+imagettftext($image, 30, 0, 10, 40, $color, $dir.$font, $_SESSION['random_number']);
 
 header("Content-type: image/png");
 imagepng($image);

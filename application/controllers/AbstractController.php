@@ -26,6 +26,13 @@ abstract class AbstractController extends Zend_Controller_Action {
 	 */
 	public $auth;
 	
+	/**
+	 * Auth data
+	 * 
+	 * @var int
+	 */
+	public $authData;
+	
 	
 	/**
 	 * Setup of global variables for this class
@@ -41,13 +48,18 @@ abstract class AbstractController extends Zend_Controller_Action {
 				require_once APPLICATION_PATH . '/models/Auth/Instance.php';	
 				$Auth = new Auth_Instance();
 				$find = $Auth->checkUsername(array('id'=>$username[0],'person'=>$username[1]));
-				//print_r($find);exit();
 				if($find){
-					$this->auth = $_COOKIE['AT_AUTH'];
-					$this->view->username = $username[1];
+					$this->authData = $find;
+					//$this->auth = $_COOKIE['AT_AUTH'];
+					$this->view->user_layout = array(
+						'id' => $find['id'],
+						'name' => $find['person'],
+						'activated' => $find['activated']
+					);
 				}
 			}else{
-				$this->auth = null;
+				$this->authData = null;
+				//$this->auth = null;
 			}
 			//database instances
 			$this->oDb = Zend_Registry::get('db');	

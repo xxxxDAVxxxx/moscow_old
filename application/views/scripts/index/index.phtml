@@ -1,48 +1,20 @@
 	<div id="new-objects" class="objects">
-							<p class="objects-title">Новые объекты</p>
-							<div class="object">
-								<a href="#">Объект 1</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 2</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 3</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 4</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 5</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
+		<p class="objects-title">Новые объекты</p>
+		<?php foreach ($this->newObjects as $key => $newObject){?>
+			<div class="object">
+				<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
+				<a href="#"><?php echo $newObject['name']?></a>
+			</div>
+		<?php }?>
 	</div>
 	<div id="pop-objects" class="objects">
-							<p class="objects-title">Популярные объекты</p>
-							<div class="object">
-								<a href="#">Объект 1</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 2</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 3</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 4</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 5</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
+		<p class="objects-title">Популярные объекты</p>
+		<?php foreach ($this->popObjects as $key => $popObject){?>
+			<div class="object">
+				<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
+				<a href="#"><?php echo $popObject['name']?></a>
+			</div>
+		<?php }?>
 	</div>
 	<div id="map">
 							<iframe id="google-map" width="330" height="310" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ru/maps?f=q&amp;source=s_q&amp;hl=ru&amp;geocode=&amp;q=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&amp;aq=&amp;sll=55.354135,40.297852&amp;sspn=14.19963,43.022461&amp;ie=UTF8&amp;hq=&amp;hnear=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0,+%D0%B3%D0%BE%D1%80%D0%BE%D0%B4+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&amp;t=m&amp;z=9&amp;ll=55.751242,37.618422&amp;output=embed"></iframe>
@@ -59,81 +31,39 @@
 	</div>
 	<hr>
 	<div id="a-class-objects" class="objects">
-						<a href="#" class="class-objects-title">Класс А</a>
-						<div>
-							<div class="object">
-								<a href="#">Объект 1</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 2</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 3</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 4</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 5</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-						</div>
+		<a href="#" class="class-objects-title">Класс А</a>
+		<div>
+			<?php foreach ($this->aObjects as $key => $aObject){?>
+				<div class="object">
+					<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
+					<a href="#"><?php echo $aObject['name']?></a>
+				</div>
+			<?php }?>
+		</div>
 	</div>
 	<hr>
 	<div id="b-class-objects" class="objects">
-						<a href="#" class="class-objects-title">Класс B</a>
-						<div>
-							<div class="object">
-								<a href="#">Объект 1</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 2</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 3</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 4</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-							<div class="object">
-								<a href="#">Объект 5</a>
-								<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-							</div>
-						</div>
+		<a href="#" class="class-objects-title">Класс B</a>
+		<div>
+			<?php foreach ($this->bObjects as $key => $bObject){?>
+				<div class="object">
+					<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
+					<a href="#"><?php echo $bObject['name']?></a>
+				</div>
+			<?php }?>
+		</div>
 	</div>
 	<hr>
 	<div id="c-class-objects" class="objects">
-							<a href="#" class="class-objects-title">Класс C и особняки</a>
-							<div>
-								<div class="object">
-									<a href="#">Объект 1</a>
-									<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-								</div>
-								<div class="object">
-									<a href="#">Объект 2</a>
-									<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-								</div>
-								<div class="object">
-									<a href="#">Объект 3</a>
-									<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-								</div>
-								<div class="object">
-									<a href="#">Объект 4</a>
-									<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-								</div> 
-								<div class="object">
-									<a href="#">Объект 5</a>
-									<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-								</div>
-							</div>
+		<a href="#" class="class-objects-title">Класс C и особняки</a>
+		<div>
+			<?php foreach ($this->cObjects as $key => $cObject){?>
+				<div class="object">
+					<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
+					<a href="#"><?php echo $cObject['name']?></a>
+				</div>
+			<?php }?>
+		</div>
 	</div>
 	<div id="news">
 							<a id="news-title" href="#">Новости</a>

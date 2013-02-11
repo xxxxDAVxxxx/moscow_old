@@ -28,24 +28,52 @@ class IndexController extends AbstractController {
 	}		
  
     public function indexAction() {	
-    	/*try {
-	    	require_once APPLICATION_PATH . '/models/Auth/Instance.php';	
-			$a = new Auth_Instance();
-			$data=$this->_getAllParams();
-			if(isset($data['name'])){
-				$a->register($data);
-			}
-		} catch (Exception $e) {
-				$this->jsonp(array(
-    				'success' => false,
-    				'error' => $e->getMessage()
-    			));		
-		}*/
+    	try{
+    		require_once APPLICATION_PATH . '/models/Objects/Instance.php';	
+    		$mObjs = new Objects_Instance();
+    		$this->view->newObjects = $mObjs->read(null,'id',null,5);
+    		$this->view->popObjects = $mObjs->read(null,'rating',null,5);
+    		$this->view->aObjects = $mObjs->read('A','id',null,5);
+    		$this->view->bObjects = $mObjs->read('B','id',null,5);
+    		$this->view->cObjects = $mObjs->read('C','id',null,5);
+    	} catch (Exception $e) {
+    		$this->jsonp(array(
+    			'success' => false,
+    			'error' => iconv("CP1251", "UTF-8", $e->getMessage())	
+    		));		
+    	}
     }   
  
     public function meAction() {	
-    	
+
     }   
  
+	public function checkcaptchaAction() {
+    	session_start();
+    	$code = $this->_getParam('code');
+	   	if(isset($code) && ($code == $_SESSION['random_number'])){
+	   		$this->_helper->json('1'); 
+	   	}
+	   	else {
+	   		$this->_helper->json('0'); 
+	   	}	
+    }
+    
+    public function testAction() {	
+   		 try{
+    		require_once APPLICATION_PATH . '/models/Objects/Instance.php';	
+    		$mObjs = new Objects_Instance();
+    		//print_r();exit();
+   			$this->jsonp(array(
+    			'success' => true,
+   				'data' => $mObjs->read(null,null)	
+    		));
+    	} catch (Exception $e) {
+    		$this->jsonp(array(
+    			'success' => false,
+    			'error' => iconv("CP1251", "UTF-8", $e->getMessage())	
+    		));		
+    	}
+    }  
     
 }
