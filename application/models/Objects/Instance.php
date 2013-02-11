@@ -18,9 +18,9 @@ require_once APPLICATION_PATH.'/models/Abstract.php';
 
 class Objects_Instance extends AbstractModel {
 	
-	public function read($class=null,$orderField='id',$company_id=null,$limit = null,$page=null){
+	public function read($class = null,$orderField='id',$company_id = null,$limit = null,$page=null){
 		$select=$this->oDb->select()
-					->from('objects');
+					->from('objects',array('id','name'));
 		if(isset($class)){
 			$select = $select->where('class=?',$class);
 		}
@@ -43,6 +43,23 @@ class Objects_Instance extends AbstractModel {
 	}	
 	
 	public function create($data, $userId = null){
+		
+		$errorsData = array();
+		if($data['name']==''){
+			$errorsData['name'] = iconv('CP1251', 'UTF-8', "Поле обязательно к заполнению!");
+		}
+		if($data['location']==''){
+			$errorsData['location'] = iconv('CP1251', 'UTF-8', "Поле обязательно к заполнению!");
+		}
+		if($data['square'] != '' && !preg_match('/^\d+$/',$data['square'])) {
+			$errorsData['square'] = iconv('CP1251', 'UTF-8', "Площадь должна быть целым числом");
+		}
+		if($data['floors'] != '' && !preg_match('/^\d+$/',$data['floors'])) {
+			$errorsData['floors'] = iconv('CP1251', 'UTF-8', "Количество этажей должно быть целым числом");
+		}
+		
+		if(count($errorsData)>0){return $errorsData;}
+		
 		$objectData = array(
 			'name' => urldecode($data['name']),
 			'desc' => urldecode($data['desc']),
@@ -57,36 +74,25 @@ class Objects_Instance extends AbstractModel {
 			'metro_remote' => $data['remoteness'],
 			'company_id' => $userId
 		);
-		/*
-		$rusFields = array('name', 'buyer');
+		
+		$rusFields = array('name', 'desc', 'location', 'arendators');
 		foreach($objectData as $key => $value) {		
 			if (in_array($key, $rusFields)) {
 			    $s = mb_detect_encoding($value);
 				$objectData[$key] = mb_convert_encoding($value, 'CP1251', $s);
 			}
 		}
-		*/
-		$this->oDb->insert('objects', $objectData);
-	}
-	
-	public function update($data){
-		$objectData = array(
-			'name' => urldecode($data['name']),
-			'area' => $data['area'], 
-			'floors' => $data['floors'], 
-			'class' => $data['class'],
-			'year' => $data['year'],
-			'buyer' => urldecode($data['buyer']),
-			'company_id' => $data['company_id']
-		);
-		$rusFields = array('name', 'buyer');
-		foreach($objectData as $key => $value) {		
-			if (in_array($key, $rusFields)) {
-			    $s = mb_detect_encoding($value);
-				$objectData[$key] = mb_convert_encoding($value, 'CP1251', $s);
+		if(isset($data['oid'])){
+			$objectId = $data['oid'];
+			if($objectId){
+				$this->oDb->update('objects', $objectData,"id = $objectId");
 			}
+		}else{
+			$this->oDb->insert('objects', $objectData);
 		}
-		$this->oDb->update('objects', $objectData, $where);
+		
+
+		
 	}
 	
 	public function get($objectId, $companyId = null){

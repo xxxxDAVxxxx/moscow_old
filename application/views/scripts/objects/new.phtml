@@ -1,19 +1,36 @@
 <p id="room-caption">Личный кабинет</p>
 <p id="room-objects-pages">Текущие страницы объектов:</p>
 <div id="object-page-link">
-	<a href="#">Название объекта</a>
+	<?php foreach($this->objects as $objsKey => $objsValue){?>
+		<a href="<?php echo URL."object/".$objsValue['id']; ?>"><?php echo $objsValue['name']; ?></a>
+		<br>
+	<?php } ?>
 </div>
 <p id="room-create-caption">
-	Создание страницы объекта недвижимости
+	<?php if(!isset($this->object)){?>
+		Создание страницы объекта недвижимости
+	<?php }else{?>
+		Редактирование страницы объекта недвижимости
+		<input id="object-id" type="hidden" value="<?php echo $this->object['id']; ?>" />
+	<?php }?>
+	<br>
+	<span class="reg-error"></span>
+	<p class="form-for-user-info" id="registration-form-required-info">
+		Поля, отмеченные <span>*</span> обязательны к заполнению
+	</p>
 </p>
-<p class="room-field-caption">Название</p>
+<p class="room-field-caption">*Название</p>
 <input value="<?php echo $this->object['name']; ?>" type="text" id="js-object-name" class="room-field">
+<br>
+<span class="reg-error"></span>
 <hr>
 <p class="room-field-caption">Описание</p>
 <textarea id="js-object-desc" class="room-field"><?php echo $this->object['desc']; ?></textarea>
 <hr>
-<p class="room-field-caption">Месторасположение</p>
+<p class="room-field-caption">*Месторасположение</p>
 <input value="<?php echo $this->object['location']; ?>" type="text" id="js-object-location" class="room-field" />
+<br>
+<span class="reg-error"></span>
 <hr>
 <p class="room-field-caption">Тип</p>
 <select id="js-object-type" class="room-field-file">
@@ -34,9 +51,13 @@
 <hr>
 <p class="room-field-sub-caption">Общая площадь (м<sup style="font:8px  Verdana, Arial, Helvetica, Tahoma, sans-serif;">2</sup>)</p>
 <input value="<?php echo $this->object['square']; ?>" type="text" id="js-object-square" name="room-object-square" class="room-field">
+<br>
+<span class="reg-error"></span>
 <hr>
 <p class="room-field-sub-caption">Кол-во этажей</p>
 <input value="<?php echo $this->object['floors']; ?>" type="text" id="js-object-floors" name="room-object-floors" class="room-field">
+<br>
+<span class="reg-error"></span>
 <hr>
 <p class="room-field-sub-caption">Класс</p>
 <select id="js-object-class" class="room-field-file">
@@ -54,13 +75,13 @@
 </select>
 <hr>
 <p class="room-field-caption">
-	Удаленность от метро (км)
+	Удаленность от метро (м)
 </p>
 <input value="<?php echo $this->object['metro_remote']; ?>" type="text" id="js-object-metro-remote" name="room-from-metro" class="room-field">
 <hr>
 <p class="room-field-caption">Текущие арендаторы</p>
 <textarea type="text" id="js-object-arendators" name="room-arendators" class="room-field">
-<?php echo $this->object['buyer']; ?>
+<?php echo $this->object['arendators']; ?>
 </textarea>
 <hr>
 <p class="room-field-caption">Дополнительные услуги</p>

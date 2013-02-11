@@ -1,9 +1,10 @@
 	<div id="new-objects" class="objects">
 		<p class="objects-title">Новые объекты</p>
+		<?php //print_r($this->newObjects);exit(); ?>
 		<?php foreach ($this->newObjects as $key => $newObject){?>
 			<div class="object">
 				<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-				<a href="#"><?php echo $newObject['name']?></a>
+				<a href="#" class="index-object-link-title"><?php echo $newObject['name']?></a>
 			</div>
 		<?php }?>
 	</div>
@@ -12,7 +13,7 @@
 		<?php foreach ($this->popObjects as $key => $popObject){?>
 			<div class="object">
 				<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-				<a href="#"><?php echo $popObject['name']?></a>
+				<a href="#" class="index-object-link-title"><?php echo $popObject['name']?></a>
 			</div>
 		<?php }?>
 	</div>
@@ -36,7 +37,7 @@
 			<?php foreach ($this->aObjects as $key => $aObject){?>
 				<div class="object">
 					<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-					<a href="#"><?php echo $aObject['name']?></a>
+					<a href="#" class="index-object-link-title"><?php echo $aObject['name']?></a>
 				</div>
 			<?php }?>
 		</div>
@@ -48,7 +49,7 @@
 			<?php foreach ($this->bObjects as $key => $bObject){?>
 				<div class="object">
 					<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-					<a href="#"><?php echo $bObject['name']?></a>
+					<a href="#" class="index-object-link-title"><?php echo $bObject['name']?></a>
 				</div>
 			<?php }?>
 		</div>
@@ -60,7 +61,7 @@
 			<?php foreach ($this->cObjects as $key => $cObject){?>
 				<div class="object">
 					<a href="#"><img src="http://moscow.atplus.com.ua/img/test-object.png" alt=""></a>
-					<a href="#"><?php echo $cObject['name']?></a>
+					<a href="#" class="index-object-link-title"><?php echo $cObject['name']?></a>
 				</div>
 			<?php }?>
 		</div>

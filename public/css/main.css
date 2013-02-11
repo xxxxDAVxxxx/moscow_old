@@ -514,19 +514,23 @@ p{
 			width:110px;
 			text-align:center;
 		}
+			.index-object-link-title{
+				height:34px;
+				display:block;
+				overflow:hidden;
+			}
 			.object a{
-				
 				text-decoration:underline;
 				font:13px Verdana, Arial, Helvetica, Tahoma, sans-serif;
 				color:#48b7e6;
 			}
+			
 			.object img{
 				display:block;
 				width:92px;
 				height:61px;
 				margin:0 auto;
 				margin-top:10px;
-				
 				border:1px solid #747474;
 			}
 		#map{

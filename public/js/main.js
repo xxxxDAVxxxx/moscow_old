@@ -548,9 +548,25 @@ $(document).ready(function() {
 	
 	// create new object
 	$('#js-object-create-submit').click(function(){
+		$('#center').children(".reg-error").html('');
 		var name = $('#js-object-name').val();
-		var desc = $('#js-object-desc').val();
 		var location = $('#js-object-location').val();
+		var error = false;
+		if (location == '') {
+			$('#js-object-location').focus();
+			$('#js-object-location').next().next(".reg-error").html('Поле обязательно к заполнению!');
+			error=true;
+		}
+		if (name == '') {
+			$('#js-object-name').focus();
+			$("#js-object-name").next().next(".reg-error").html('Поле обязательно к заполнению!');
+			error=true;
+		}
+		if(error){
+			return;
+		}
+		
+		var desc = $('#js-object-desc').val();
 		var type = $('#js-object-type').val();
 		// photo param
 		var video = $('#js-object-video').val();
@@ -561,16 +577,8 @@ $(document).ready(function() {
 		var remoteness = $('#js-object-metro-remote').val();
 		var arendators = $('#js-object-arendators').val();
 		//var cid = 57;
+
 		
-		if (name == '') {
-			$('#js-object-name').focus();
-			return;
-		}
-		if (location == '') {
-			$('#js-object-location').focus();
-			return;
-		}
-			
 		$.ajax({
 			dataType: 'jsonp'	
 			, url: URL + 'objects/create'
@@ -591,7 +599,7 @@ $(document).ready(function() {
 				}
 	        }
 	        , success: function(response) {
-	        	if (response.success) {
+	        	if(response.success) {
 	        		//$('body').css('cursor','default');
 	        		//$('#not-active-submit-mess').css("display","block");
 	        		//window.location.href = window.location.href;
@@ -599,51 +607,91 @@ $(document).ready(function() {
 	        		//$('#form_link').hide();
 		        	//$('#js-mail-result').html("Спасибо, Ваше письмо успешно отправлено!");
 		        	//$('#js-mail-result').show();
-	        	}
-	        	else {
-	        		
-	        		//$('body').css('cursor','default');
-	        		//if(response.error=="User not found"){
-	        		//	$("#auth").children(".reg-error").html("Пользователь с таким email адресом не зарегистрирован.");
-	        		//} else {
-	        		//	$("#auth").children(".reg-error").html(response.error);
-	        		//}
-	        		//alert("error");
-	        		//$('#js-mail-result').html("Ошибка!");
-	        		//$('#js-mail-result').show();
+	        	}else{
+	        		if(typeof(response.error) == 'object'){
+	        			
+	        			$('#js-object-floors').next().next(".reg-error").html(response.error.floors);
+	        			$('#js-object-square').next().next(".reg-error").html(response.error.square);
+	        			if(response.error.floors || response.error.square){
+	        				$("html,body").animate({scrollTop: $('#js-object-square').offset().top - 100}, 5);
+	        			}
+	        			
+	        			$('#js-object-location').next().next(".reg-error").html(response.error.location);
+	        			$("#js-object-name").next().next(".reg-error").html(response.error.name);
+	        			if(response.error.location || response.error.name){
+	        				$("html,body").animate({scrollTop: $('#js-object-name').offset().top - 100}, 5);
+	        			}
+	        			//$('input#company-pass').prev(".registration-caption").children(".reg-error").html(response.error.password);
+	        			//$('input#company-pass-confirm').prev(".registration-caption").children(".reg-error").html(response.error.passconfirm);
+	        			//$('input#company-email').prev(".registration-caption").children(".reg-error").html(response.error.email);
+	        			//$('input#responsible-person').prev(".registration-caption").children(".reg-error").html(response.error.person);
+	        		}else{
+	        			$("#room-create-caption").children(".reg-error").html(response.error);
+	        			$("html,body").animate({scrollTop: $('#room-create-caption').offset().top - 100}, 5);
+	        		}
 	        	}
 	        }			
 		});
 		
 	});
-	//fgdfgdf       
+	     
 	// update object
 	$('#js-object-update-submit').click(function(){
-		var name = "Название объекта";
-		//var location = $('select#select-location option:selected').val();
-		var area = $('input#room-object-square').val();
-		var floors = $('input#room-object-floors').val();
-		var qualityClass = $('select#room-select-class option:selected').val();
-		var year = 1986;//$('select#room-object-year option:selected').val();
-		var arendators = $('input#room-arendators').val();
-		var cid = 57;
-			
+		$('#center').children(".reg-error").html('');
+		var oid = $('#object-id').val();
+		if(oid==''){
+			return;
+		}
+		var name = $('#js-object-name').val();
+		var location = $('#js-object-location').val();
+		var error = false;
+		if (location == '') {
+			$('#js-object-location').focus();
+			$('#js-object-location').next().next(".reg-error").html('Поле обязательно к заполнению!');
+			error=true;
+		}
+		if (name == '') {
+			$('#js-object-name').focus();
+			$("#js-object-name").next().next(".reg-error").html('Поле обязательно к заполнению!');
+			error=true;
+		}
+		if(error){
+			return;
+		}
+		
+		var desc = $('#js-object-desc').val();
+		var type = $('#js-object-type').val();
+		// photo param
+		var video = $('#js-object-video').val();
+		var square = $('#js-object-square').val();
+		var floors = $('#js-object-floors').val();
+		var qualityClass = $('#js-object-class option:selected').val();
+		var year = $('#js-object-year option:selected').val();
+		var remoteness = $('#js-object-metro-remote').val();
+		var arendators = $('#js-object-arendators').val();
+		
 		$.ajax({
 			dataType: 'jsonp'	
 			, url: URL+'objects/create'
 			, data: {
 				object:{
 					'name': encodeURIComponent(name),
-					'area': area,
+					'desc': encodeURIComponent(desc),
+					'location': encodeURIComponent(location),
+					'type': type,
+					'photo': null,
+					'video': video,
+					'square': square,
 					'floors': floors,
 					'class': qualityClass,
 					'year': year,
-					'buyer': encodeURIComponent(arendators),
-					'company_id': cid
+					'remoteness': remoteness,
+					'arendators': encodeURIComponent(arendators),
+					'oid': oid
 				}
 	        }
 	        , success: function(response) {
-	        	if (response.success) {
+	        	if(response.success) {
 	        		//$('body').css('cursor','default');
 	        		//$('#not-active-submit-mess').css("display","block");
 	        		//window.location.href = window.location.href;
@@ -651,18 +699,28 @@ $(document).ready(function() {
 	        		//$('#form_link').hide();
 		        	//$('#js-mail-result').html("Спасибо, Ваше письмо успешно отправлено!");
 		        	//$('#js-mail-result').show();
-	        	}
-	        	else {
-	        		
-	        		//$('body').css('cursor','default');
-	        		//if(response.error=="User not found"){
-	        		//	$("#auth").children(".reg-error").html("Пользователь с таким email адресом не зарегистрирован.");
-	        		//} else {
-	        		//	$("#auth").children(".reg-error").html(response.error);
-	        		//}
-	        		//alert("error");
-	        		//$('#js-mail-result').html("Ошибка!");
-	        		//$('#js-mail-result').show();
+	        	}else{
+	        		if(typeof(response.error) == 'object'){
+	        			
+	        			$('#js-object-floors').next().next(".reg-error").html(response.error.floors);
+	        			$('#js-object-square').next().next(".reg-error").html(response.error.square);
+	        			if(response.error.floors || response.error.square){
+	        				$("html,body").animate({scrollTop: $('#js-object-square').offset().top - 100}, 5);
+	        			}
+	        			
+	        			$('#js-object-location').next().next(".reg-error").html(response.error.location);
+	        			$("#js-object-name").next().next(".reg-error").html(response.error.name);
+	        			if(response.error.location || response.error.name){
+	        				$("html,body").animate({scrollTop: $('#js-object-name').offset().top - 100}, 5);
+	        			}
+	        			//$('input#company-pass').prev(".registration-caption").children(".reg-error").html(response.error.password);
+	        			//$('input#company-pass-confirm').prev(".registration-caption").children(".reg-error").html(response.error.passconfirm);
+	        			//$('input#company-email').prev(".registration-caption").children(".reg-error").html(response.error.email);
+	        			//$('input#responsible-person').prev(".registration-caption").children(".reg-error").html(response.error.person);
+	        		}else{
+	        			$("#room-create-caption").children(".reg-error").html(response.error);
+	        			$("html,body").animate({scrollTop: $('#room-create-caption').offset().top - 100}, 5);
+	        		}
 	        	}
 	        }			
 		});

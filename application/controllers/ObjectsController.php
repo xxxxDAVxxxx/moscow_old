@@ -38,14 +38,22 @@ class ObjectsController extends AbstractController {
  
     public function newAction() {	
     	try{
-    		$oId = $this->_getParam('id');
-    		if(isset($oId)){
-    			$object = $this->mObjects->get($oId,$this->authData['id']);
-    			if($object){
-    				$this->view->object = $object;
-    			}else{
-    				$this->_redirect(URL.'objects/new');
-    			}
+    		if (!isset($this->authData['id'])) {
+    			throw new Exception('Access denied');
+    		}else{ 
+    			if(!$this->authData['activated']) {
+	    			$this->_redirect(URL);
+	    		}
+	    		$oId = $this->_getParam('id');
+	    		if(isset($oId)){
+	    			$object = $this->mObjects->get($oId,$this->authData['id']);
+	    			if($object){
+	    				$this->view->object = $object;
+	    			}else{
+	    				$this->_redirect(URL.'objects/new');
+	    			}
+	    		}
+	    		$this->view->objects = $this->mObjects->read(null,'id',$this->authData['id']);
     		}
     	} catch (Exception $e) {
     		$this->jsonp(array(
@@ -58,15 +66,25 @@ class ObjectsController extends AbstractController {
     public function createAction() {	
     	try{   
     		 		
-    		if (!isset($this->auth['id'])) {
+    		if (!isset($this->authData['id'])) {
     			throw new Exception('Access denied');
-    		}    
-    				
-    		$object = $this->_getParam('object');   		
-    		$this->mObjects->create($object, $this->authData['id']);
-    		$this->jsonp(array(
-    			'success' => true	
-    		));
+    		}else{
+	    		if (!$this->authData['activated']) {
+	    			$this->_redirect(URL);
+	    		}
+    		    $object = $this->_getParam('object');   		
+    			$errors = $this->mObjects->create($object, $this->authData['id']);
+    			if(count($errors)==0){
+	    			$this->jsonp(array(
+		    			'success' => true	
+		    		));
+    			}else{
+    				$this->jsonp(array(
+    					'success' => false,
+    					'error' => $errors	
+    				));
+    			}
+    		}
     	} catch (Exception $e) {
     		$this->jsonp(array(
     			'success' => false,
@@ -77,11 +95,26 @@ class ObjectsController extends AbstractController {
     
     public function updateAction() {	
     	try{
-    		$object = $this->_getParam('object');
-    		$this->mObjects->update($object);
-    		$this->jsonp(array(
-    			'success' => true	
-    		));
+    		if (!isset($this->authData['id'])) {
+    			throw new Exception('Access denied');
+    		}else{
+    			if(!$this->authData['activated']){
+	    			$this->_redirect(URL);
+	    		}
+	    		$object = $this->_getParam('object');
+	    		//$this->mObjects->update($object);
+    			$errors = $this->mObjects->create($object, $this->authData['id']);
+    			if(count($errors)==0){
+	    			$this->jsonp(array(
+		    			'success' => true	
+		    		));
+    			}else{
+    				$this->jsonp(array(
+    					'success' => false,
+    					'error' => $errors	
+    				));
+    			}
+    		}
     	} catch (Exception $e) {
     		$this->jsonp(array(
     			'success' => false,
