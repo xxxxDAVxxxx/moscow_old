@@ -1,0 +1,98 @@
+<p id="profile-caption">Профиль</p>
+<p id="profile-personal-title">Личные данные</p>
+<div id="profile-edit-personal-submit"></div>
+<div id="profile-personal">
+	<hr>
+	<p class="profile-personal-captions">Название компании</p>
+	<p class="profile-personal-values"><?php echo $this->companyData['name']; ?></p>
+	<hr>
+	<p class="profile-personal-captions">Email</p>
+	<p class="profile-personal-values"><?php echo $this->companyData['email']; ?></p>
+	<hr>
+	<p class="profile-personal-captions">Пароль</p>
+	<p class="profile-personal-captions">
+		<a id="profile-change-pass">изменить пароль</a>
+	</p>
+	<?php if($this->companyData['desc']){ ?>
+		<hr>
+		<p class="profile-personal-captions">О компании</p>
+		<div class="profile-personal-desc"><?php echo $this->companyData['desc']; ?></div>
+	<?php } ?>
+	<?php if($this->companyData['phone']){ ?>
+		<hr>
+		<p class="profile-personal-captions">Телефон</p>
+		<p class="profile-personal-values"><?php echo $this->companyData['phone']; ?></p>
+	<?php } ?>	
+	<?php if($this->companyData['icq']){ ?>
+		<hr>
+		<p class="profile-personal-captions">ICQ</p>
+		<p class="profile-personal-values"><?php echo $this->companyData['icq']; ?></p>
+	<?php } ?>
+	<?php if($this->companyData['skype']){ ?>
+		<hr>
+		<p class="profile-personal-captions">Skype</p>
+		<p class="profile-personal-values"><?php echo $this->companyData['skype']; ?></p>
+	<?php } ?>
+	<?php if($this->companyData['site']){ ?>
+		<hr>
+		<p class="profile-personal-captions">Сайт компании</p>
+		<p class="profile-personal-values"><?php echo $this->companyData['site']; ?></p>
+	<?php } ?>
+	<hr>
+</div>
+<a href="<?php echo URL."objects/new" ?>" id="profile-create-object"></a>
+<div id="profile-objects-links">
+	<?php foreach($this->objects as $key => $object){?>
+		<a href="#" class="profile-object-link"><?php echo $object['name']?></a>
+	<?php }?>
+</div>
+<hr>
+<div id="profile-objects">
+	<a href="<?php echo URL."object/".$this->objects[0]['id'] ?>" id="profile-object-edit" class="profile-object-edit"></a>
+	<div id="profile-object-delete" class="profile-object-delete"></div>
+	<hr>
+	<img id="profile-object-img" src="<?php echo URL.'img/profile-object-image.png'; ?>">
+	<div id="profile-object-info">
+		<p class="profile-object-info-captions">Месторасположение</p>
+		<p class="profile-object-info-captions">Общая площадь</p>
+		<p class="profile-object-info-captions">Кол-во этажей</p>
+		<p class="profile-object-info-captions">Класс</p>
+		<p class="profile-object-info-captions">Год постройки</p>
+		<p class="profile-object-info-captions">Удаленность от метро</p>
+		<p class="profile-object-info-captions">Текущие арендаторы</p>		
+	</div>
+	<hr>
+	<div id="profile-sub-objects">
+		<p id="profile-sub-objects-title">Свободные помещения</p>
+		<div class="profile-sub-object" id="profile-sub-object1">
+			<div class="profile-sub-object-num">1.</div>
+			<div class="profile-sub-object-content">
+				<p class="profile-sub-object-captions profile-sub-object-floor">Этаж</p>
+				<div id="profile-sub-object-edit1" class="profile-object-edit"></div>
+				<div id="profile-sub-object-delete1" class="profile-object-delete"></div>
+				<hr>
+				<p class="profile-sub-object-captions">Площадь</p>
+				<p class="profile-sub-object-captions">Возможная дата въезда</p>
+				<p class="profile-sub-object-captions">Отделка</p>
+				<p class="profile-sub-object-captions">Стоимость</p>
+			</div>
+		</div>
+		<div class="profile-sub-object" id="profile-sub-object2">
+			<div class="profile-sub-object-num">2.</div>
+			<div class="profile-sub-object-content">
+				<p class="profile-sub-object-captions profile-sub-object-floor">Этаж</p>
+				<div id="profile-sub-object-edit2" class="profile-object-edit"></div>
+				<div id="profile-sub-object-delete2" class="profile-object-delete"></div>
+				<hr>
+				<p class="profile-sub-object-captions">Площадь</p>
+				<p class="profile-sub-object-captions">Возможная дата въезда</p>
+				<p class="profile-sub-object-captions">Отделка</p>
+				<p class="profile-sub-object-captions">Стоимость</p>
+			</div>
+		</div>
+	</div>
+</div>
+<input name="cid" id="cid" type="hidden" value="<?php echo $this->companyData['id']; ?>">
+<?php 
+	echo $this->partial('partial/registration.phtml', array('profileData' => $this->companyData));
+?> 

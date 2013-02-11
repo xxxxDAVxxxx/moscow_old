@@ -1,0 +1,150 @@
+<div id="registration-bg">
+</div>
+		<div id="registration">
+			<div id="registration-center">
+				<div id="registration-cancel"></div>
+				<div id="registration-form">
+					<p class="registration-form-title">
+					<?php if(!isset($this->profileData)){ ?>	
+						Регистрация собственников недвижимости
+					<?php }else{?>
+						Редактирование данных собственника недвижимости
+					<?php }?>
+						<br><span class="reg-error"></span>
+					</p>
+					<p class="form-for-user-info" id="registration-form-required-info">
+						Поля, отмеченные <span>*</span> обязательны к заполнению
+					</p>
+					<p class="registration-caption">
+						*E-mail:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-email" name="company-email" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['email']:''; ?>"
+							<?php echo $this->profileData ? 'disabled':''; ?>>
+					<br>
+					<p class="registration-caption">
+						*Название компании:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input <?php echo $this->profileData ? 'uniq-company-profile':'uniq-company-registr'; ?>" id="company-name" name="company-name" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['name']:''; ?>">
+					<br>
+					<p class="registration-caption">
+						*Ответственное лицо:
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="responsible-person" name="responsible-person" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['person']:''; ?>">
+					<br>
+					<?php if(isset($this->profileData)){ ?>
+						<div style="text-align:center;
+									font:italic 12px Verdana,Arial,Helvetica,Tahoma,sans-serif;
+									color:#747474;
+						">Изменить пароль</div>
+						<hr style="margin-bottom:10px;
+									border-width:1px;
+						">
+					<?php }?>
+					<p class="registration-caption">
+					<?php if(!isset($this->profileData)){ ?>
+						*Пароль:
+					<?php }else{ ?>
+						Новый пароль:
+					<?php }?>
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-pass" name="company-pass" type="password">
+					<br>
+					<p class="registration-caption">
+					<?php if(!isset($this->profileData)){ ?>
+						*Пароль повторно:
+					<?php }else{ ?>
+						Новый пароль повторно:
+					<?php }?>
+						<br><span class="reg-error"></span>
+					</p>
+					<input class="registration-input" id="company-pass-confirm" name="company-pass-confirm" type="password">
+					<br>
+					<?php if(isset($this->profileData)){ ?>
+						<hr style="margin-bottom:10px;
+									border-width:1px;
+						">
+					<?php }?>
+					<p class="registration-caption">
+						Описание компании:
+					</p>
+					<textarea class="registration-textarea" id="company-desc" name="company-desc"><?php echo $this->profileData['desc']; ?></textarea>
+					<br>
+
+					<!-- <p class="registration-caption">
+						Наименование объекта:
+					</p>
+					<input class="registration-input" id="object-name" name="object-name" type="text">
+					<br> -->
+					<p class="registration-caption">
+						Телефон:
+					</p>
+					<input class="registration-input" id="company-phone" name="company-phone" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['phone']:''; ?>">
+					<br>
+					<p class="registration-caption">
+						Skype:
+					</p>
+					<input class="registration-input" id="company-skype" name="company-skype" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['skype']:''; ?>">
+					<br>
+					<p class="registration-caption">
+						ICQ:
+					</p>
+					<input class="registration-input" id="company-icq" name="company-icq" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['icq']:''; ?>">
+					<br>
+					<p class="registration-caption">
+						Название сайта <span class="form-for-user-info">(если имеется)</span>
+					</p>
+					<input class="registration-input" id="site" name="site" type="text" 
+							value="<?php echo $this->profileData ? $this->profileData['site']:''; ?>"/>
+					<br>
+				<?php if(!isset($this->profileData)){ ?>
+					<p class="registration-caption-license">
+						<input id="license-check" name="license-check" type="checkbox"/>
+						Я ознакомился и согласен с правилами <a href="#">лицензионного соглашения</a>
+						<br><span class="reg-error"></span>
+					</p>
+					<!-- Begin of captcha -->
+						<div id="wrap" align="center">
+							<img src="<?php echo URL . 'captcha/get_captcha.php'?>" alt="" id="captcha" />
+							<input name="code" type="text" id="code">
+							<br>
+							<span class="reg-error"></span>
+						</div>
+						<img src="<?php echo URL . 'captcha/refresh.jpg' ?>" width="25" alt="" id="refresh" />
+					<!-- End of captcha -->	
+					<div id="registration-submit">
+					</div>
+				<?php }else{?>	
+					<div id="profile-edit-submit">
+					</div>
+				<?php }?>
+					<hr style="clear:both;border-width:0px;">
+					<!-- <p id="submit-user-info" class="form-for-user-info">
+						После завершения регистрации с Вами свяжется наш менеджер
+					</p> -->
+					
+				</div>
+			</div>
+		</div>
+	<?php if(!isset($this->profileData)){ ?>
+		<div id="forgot-pass-messbox">
+			<div id="forgot-pass-messbox-center">
+				<div id="forgot-pass-messbox-cancel"></div>
+				<p class="forgot-pass-title">Укажите email адрес, под которым Вы регистрировались на сайте.</p>
+				<input id="company-forgot-pass" name="company-forgot-pass" type="text" placeholder="Email">
+				<div id="forgot-pass-submit"></div>
+				<br><span class="reg-error"></span>
+				<p id="forgot-pass-submit-mess">На ваш email адрес отправлено письмо с деталями восстановления пароля.</p>
+				
+			</div>
+		</div>
+	<?php }?>
