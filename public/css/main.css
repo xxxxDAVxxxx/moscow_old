@@ -926,7 +926,19 @@ p{
 				color:#757575;
 				font:11px Verdana, Arial, Helvetica, Tahoma, sans-serif;
 				margin-bottom:5px;
+				width:160px;
+				float:left;
+				clear:left;
 			}
+			.profile-object-info-values{
+				width:210px;
+				color:#000;
+				font:bold 11px Verdana, Arial, Helvetica, Tahoma, sans-serif;
+				margin-bottom:5px;
+				float:left;
+				clear:right;
+			}
+			
 		#profile-sub-objects{
 			margin-top:20px;
 			clear:both;
@@ -964,7 +976,7 @@ p{
 			}
 				.profile-object-link{
 					display:inline-block;
-					
+					cursor:pointer;
 					color:#585959;
 					font:italic 14px Verdana, Arial, Helvetica, Tahoma, sans-serif;
 					padding:3px 10px;
@@ -972,6 +984,15 @@ p{
 					margin:1px 0px; 
 				}
 				.profile-object-link:hover{
+					color:#d8d7d5;
+					background-color:#787878;
+				}
+				.profile-object-link-hover{
+					display:inline-block;
+					cursor:pointer;
+					font:italic 14px Verdana, Arial, Helvetica, Tahoma, sans-serif;
+					padding:3px 10px;
+					margin:1px 0px; 
 					color:#d8d7d5;
 					background-color:#787878;
 				}

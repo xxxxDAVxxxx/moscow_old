@@ -83,9 +83,11 @@ abstract class AbstractController extends Zend_Controller_Action {
 	 * @return void
 	 */
 	public function jsonp($data) {
+		//print_r($data);
 		$content = Zend_Json::encode($data);
+		//print_r($content);exit();
 		$content = $this->_getParam('callback') . '(' . $content . ')';
-
+		
 		$this->getHelper('viewRenderer')->setNoRender();
 		$response = $this->getResponse();
         $response

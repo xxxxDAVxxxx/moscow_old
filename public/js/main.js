@@ -727,4 +727,29 @@ $(document).ready(function() {
 		
 	});
 	
+	$('.profile-object-link').click(function(){
+		var oid = $(this).attr('id');
+		$.ajax({
+			dataType: 'jsonp'	
+			, url: URL+'objects/getItem'
+			, data: {
+				'oid': oid
+			}
+			, success: function(response){			        	
+				if (response.success) {
+			        $.each(response.object, function(index, value){ 
+			        	$("#info-"+index).html(value);
+			        });
+			        $('#profile-object-edit').attr('href',URL+'object/'+response.object.id);
+			        $('#profile-objects-links a').attr('class','profile-object-link');
+			        $('#profile-objects-links #'+response.object.id).attr('class','profile-object-link-hover');
+			        //$('#profile-object-link').attr('href',URL+'object/'+response.object.id);
+			        
+				}
+				else {
+			       
+				}
+			}
+		});
+	});
 });

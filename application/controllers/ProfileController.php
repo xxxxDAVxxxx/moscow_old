@@ -46,8 +46,14 @@ class ProfileController extends AbstractController {
 	    				
 	    				require_once APPLICATION_PATH . '/models/Objects/Instance.php';	
 						$mObject = new Objects_Instance();
-						
 	    				$this->view->objects = $mObject->read(null,'id',$user['id']);
+	    				if (isset($this->view->objects[0])) {
+	    					$this->view->object = $mObject->get($this->view->objects[0]['id']);	
+	    				}		
+	    				else {
+	    					$this->view->object = null;
+	    				}	
+	    				
 	    				
 	    			}else{
 	    				$this->_redirect(URL);

@@ -43,7 +43,7 @@
 <a href="<?php echo URL."objects/new" ?>" id="profile-create-object"></a>
 <div id="profile-objects-links">
 	<?php foreach($this->objects as $key => $object){?>
-		<a href="#" class="profile-object-link"><?php echo $object['name']?></a>
+		<a id="<?php echo $object['id']?>" class="profile-object-link"><?php echo $object['name']?></a>
 	<?php }?>
 </div>
 <hr>
@@ -53,13 +53,30 @@
 	<hr>
 	<img id="profile-object-img" src="<?php echo URL.'img/profile-object-image.png'; ?>">
 	<div id="profile-object-info">
-		<p class="profile-object-info-captions">Месторасположение</p>
-		<p class="profile-object-info-captions">Общая площадь</p>
-		<p class="profile-object-info-captions">Кол-во этажей</p>
-		<p class="profile-object-info-captions">Класс</p>
-		<p class="profile-object-info-captions">Год постройки</p>
-		<p class="profile-object-info-captions">Удаленность от метро</p>
-		<p class="profile-object-info-captions">Текущие арендаторы</p>		
+		<p class="profile-object-info-captions">Название:</p>
+		<p class="profile-object-info-values" id="info-name"><?php echo $this->object['name']; ?></p>
+		
+		<p class="profile-object-info-captions">Месторасположение:</p>
+		<p class="profile-object-info-values" id="info-location"><?php echo $this->object['location']; ?></p>
+		
+		<p class="profile-object-info-captions">Общая площадь (м<sup style="font:8px/8px  Verdana, Arial, Helvetica, Tahoma, sans-serif;">2</sup>):</p>
+		<p class="profile-object-info-values" id="info-square"><?php echo $this->object['square']; ?></p>
+		
+		<p class="profile-object-info-captions">Кол-во этажей:</p>
+		<p class="profile-object-info-values" id="info-floors"><?php echo $this->object['floors']; ?></p>
+		
+		<p class="profile-object-info-captions">Класс:</p>
+		<p class="profile-object-info-values" id="info-class"><?php echo $this->object['class']; ?></p>
+		
+		<p class="profile-object-info-captions">Год постройки:</p>
+		<p class="profile-object-info-values" id="info-year"><?php echo $this->object['year']; ?></p>
+		
+		<p class="profile-object-info-captions">Удаленность от метро (м):</p>
+		<p class="profile-object-info-values" id="info-metro_remote"><?php echo $this->object['metro_remote']; ?></p>
+		
+		<p class="profile-object-info-captions">Текущие арендаторы:</p>	
+		<p class="profile-object-info-values" id="info-arendators"><?php echo $this->object['arendators']; ?></p>
+			
 	</div>
 	<hr>
 	<div id="profile-sub-objects">

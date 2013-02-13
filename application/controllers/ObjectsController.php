@@ -122,5 +122,40 @@ class ObjectsController extends AbstractController {
     		));		
     	}
     }  
+    
+    public function getitemAction() {	
+    	//header('Content-Type: text/html; charset=utf-8');
+    	try{
+    		if (!isset($this->authData['id'])) {
+    			throw new Exception('Access denied');
+    		}else{ 
+    			if(!$this->authData['activated']) {
+	    			$this->_redirect(URL);
+	    		}
+	    		
+	    		$oId = $this->_getParam('oid');
+	    		if(isset($oId)){
+	    			$object = $this->mObjects->get($oId,$this->authData['id']);    			
+	    			if($object){
+	    				$rusFields = array('name', 'desc', 'location', 'arendators');
+						foreach($object as $key => $value){
+							if(in_array($key, $rusFields)){
+								$object[$key] = iconv('Windows-1251','UTF-8',$value);
+							}
+						}
+		    			$this->jsonp(array(
+							'success' => true,
+	    					'object' => $object
+						));
+	    			}
+	    		}
+    		}
+    	} catch (Exception $e) {
+    		$this->jsonp(array(
+    			'success' => false,
+    			'error' => iconv("CP1251", "UTF-8", $e->getMessage())	
+    		));		
+    	}
+    }   
  
 }

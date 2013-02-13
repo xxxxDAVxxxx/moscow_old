@@ -97,12 +97,12 @@ class Objects_Instance extends AbstractModel {
 	
 	public function get($objectId, $companyId = null){
 		$select=$this->oDb->select()
-					->from('objects')
-					->where('id=?',$objectId);;
+			->from('objects')
+			->where('id=?',$objectId);;
 		if(isset($companyId)){
 			$select = $select->where('company_id=?',$companyId);
 		}
-		return $this->oDb->fetchRow($select);
+		return  $this->oDb->fetchRow($select);
 	}	
 	
 }
