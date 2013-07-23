@@ -34,6 +34,7 @@ class ProfileController extends AbstractController {
  
     public function indexAction(){
     	try{
+    		
 	    	if($this->authData){
 	    		$user=$this->authData;
 	    		if($this->_getParam('id') == $user['id']){

@@ -1,4 +1,7 @@
 function maxSizeForIE(jQSelect,maxWidth,maxHeight){
+//$('div.example').css('width', function(index) {
+//	  return index * 50;
+//	});
 	if (navigator.appName == "Microsoft Internet Explorer") {
 		jQSelect.width()==maxWidth ? jQSelect.width("") : {};
 		jQSelect.height()==maxHeight ? jQSelect.height("") : {};
@@ -11,8 +14,43 @@ function maxSizeForIE(jQSelect,maxWidth,maxHeight){
 	//$("#view_project_img").width()>640 ? $("#view_project_img").width(640+"px") : $("#view_project_img").width("");
 }
 
+
+
+function markLink(selector,seldElement,cssObj){
+	/*
+	var cssObj = {
+		      'background-color' : '#ddd',
+		      'font-weight' : '',
+		      'color' : 'rgb(0,40,244)'
+		    };
+	*/
+	$(selector).each(function(index){
+		if($(this)[0] == seldElement[0]){
+			
+			$(this).css(cssObj);
+		}
+	});
+}
+
+function unMarkLinks(selector,cssObj){
+	/*
+	var cssObj = {
+		      'background-color' : '#ddd',
+		      'font-weight' : '',
+		      'color' : 'rgb(0,40,244)'
+		    };
+	*/
+	$(selector).each(function(index){
+		$(this).css(cssObj);
+	});
+}
+
 $(document).ready(function() { 
 	URL = 'http://moscow.atplus.com.ua/';
+	
+	var url = document.location.pathname.toString();
+	var urli = url.split("/");
+	
 	
 	$('#registration-link').click(function(){
 		$('#registration').css('display','block');
@@ -31,12 +69,13 @@ $(document).ready(function() {
 	$('img#refresh').click(function(){  
 		change_captcha();
 	});
- 
+
 	$('#auth-forgot-pass').click(function(){
 		$('#forgot-pass-messbox').css('display','block');
 		$('#registration-bg').css('display','block');
 		$('#forgot-pass-submit-mess').css('display','none');
 	});
+
 	$('#forgot-pass-messbox-cancel').click(function(){
 		$('#forgot-pass-messbox').css('display','none');
 		$('#registration-bg').css('display','none');
@@ -729,6 +768,8 @@ $(document).ready(function() {
 	
 	$('.profile-object-link').click(function(){
 		var oid = $(this).attr('id');
+        $('.profile-object-link').attr('mark','0');
+        $(this).attr('mark','1');
 		$.ajax({
 			dataType: 'jsonp'	
 			, url: URL+'objects/getItem'
@@ -741,8 +782,8 @@ $(document).ready(function() {
 			        	$("#info-"+index).html(value);
 			        });
 			        $('#profile-object-edit').attr('href',URL+'object/'+response.object.id);
-			        $('#profile-objects-links a').attr('class','profile-object-link');
-			        $('#profile-objects-links #'+response.object.id).attr('class','profile-object-link-hover');
+			        
+			        //$('#profile-objects-links a').attr('class','profile-object-link');
 			        //$('#profile-object-link').attr('href',URL+'object/'+response.object.id);
 			        
 				}
@@ -752,4 +793,17 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	if((urli[1]=='profile') && (urli[2]=='id')){
+		markLink($('.profile-object-link'),$('.profile-object-link[mark=1]'),{'color':'#d8d7d5','background-color':'#787878'});
+		$('.profile-object-link').mouseout(function(){
+			unMarkLinks($('.profile-object-link'),{'color':'#585959','background-color':'#C0C0C0'});
+			markLink($('.profile-object-link'),$('.profile-object-link[mark=1]'),{'color':'#d8d7d5','background-color':'#787878'});
+		});
+		$('.profile-object-link').mouseover(function(){
+			unMarkLinks($('.profile-object-link'),{'color':'#585959','background-color':'#C0C0C0'});
+			$(this).css({'color':'#d8d7d5','background-color':'#787878'});
+		});
+	}
+	
 });

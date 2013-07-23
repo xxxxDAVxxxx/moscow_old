@@ -43,7 +43,7 @@
 <a href="<?php echo URL."objects/new" ?>" id="profile-create-object"></a>
 <div id="profile-objects-links">
 	<?php foreach($this->objects as $key => $object){?>
-		<a id="<?php echo $object['id']?>" class="profile-object-link"><?php echo $object['name']?></a>
+		<a id="<?php echo $object['id']?>" class="profile-object-link" <?php echo ($key==0)?' mark="1"':' mark="0"'?>><?php echo $object['name']?></a>
 	<?php }?>
 </div>
 <hr>
